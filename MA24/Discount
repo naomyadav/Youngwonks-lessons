@@ -1,0 +1,22 @@
+/off_percentage=0;
+/x = input('What is the price = ');
+
+/print(type(x)) # str
+/price=int(x) 
+/print(type(x)) # str
+/print(type(price)) # int
+
+/if price==10 or price>10:
+/    off_percentage='10';
+else:
+/    off_percentage='20';
+
+/off_percentage=str(off_percentage)
+
+/print(off_percentage+'% off')
+
+/off_percentage=int(off_percentage)
+
+/discount = (off_percentage * price)//100
+
+/print(discount)
