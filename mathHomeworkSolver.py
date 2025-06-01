@@ -41,7 +41,7 @@ def solveWithLargeLangugeModels(q):
     response = requests.post(
         'https://api.openai.com/v1/chat/completions',
         headers={
-            'Authorization': 'Bearer sk-proj-8FgGmj7gL6UNLTtU4tpBT3BlbkFJ7rGJcj1a9DPpJxNnGwRo',
+            'Authorization': 'Bearer sk-proj-H8AFPgPGYmj7gL6UNLTtU4tpBT3BlbkFJ7rGJcj1a9DPpJxNnGwRo',
             'Content-Type': 'application/json'
         },
         data=json.dumps({
