@@ -36,7 +36,9 @@ i = 6 :  6 12 18 24 30 36 42 48 54
 i = 7 :  7 14 21 28 35 42 49 56 63
 i = 8 :  8 16 24 32 40 48 56 64 72
 i = 9 :  9 18 27 36 45 54 63 72 81 """
-def multiplicaiton_table():
+def multiplicaiton_table(table=5):
+    for i in range(10):
+        print(table*i,end="")
     return None
 
 """ Exercise 4 :Given a list of lists, find the maximum value in each individual list.
