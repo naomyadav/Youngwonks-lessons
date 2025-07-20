@@ -190,7 +190,7 @@ def mini_calculator(a, b, operation):
 
 # 19. Logging with Default Arguments
 def log(message, level="INFO"):
-    """Log a message with a given level. E.g., log("test") => "[INFO] test""""
+    """Log a message with a given level. E.g., log("test") => "[INFO] test"""""
     retstring = ""
     #Write code here
     return retstring
