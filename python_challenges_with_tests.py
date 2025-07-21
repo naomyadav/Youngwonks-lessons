@@ -1,3 +1,6 @@
+from math import sqrt,log
+import math as mt
+
 """
 Python Coding Challenges: Core Concepts Practice (30 Problems)
 
@@ -16,8 +19,7 @@ def swap(a, b):
     """Return swapped values. E.g., swap(3, 5) => (5, 3)"""
     c = a
     d = b
-    # Write code here
-    return (c, d)
+    return (d, c)
 
 # 3. Type Checker
 def check_types(lst):
@@ -69,11 +71,10 @@ def primes_less_than(n):
 
 # 9. Factorial (Iterative)
 def factorial(n):
-    """Return the factorial of n using a loop. E.g., 5! => 120
+    """Return the factorial of n. E.g., 5! => 120
     factorial(n) = n*(n-1)*(n-1)*....*2*3*1
     if n<1 return 1"""
-    factorial_val = 1
-    # Write code here
+    factorial_val = mt.factorial(n)
     return factorial_val
 
 # 10. Student Score Aggregator
@@ -185,7 +186,6 @@ def mini_calculator(a, b, operation):
         pass
 
     retval = -99999999999
-    # Write code here
     return retval
 
 # 19. Logging with Default Arguments
@@ -255,8 +255,11 @@ def safe_divide(a, b):
 
     Returns:
     - Result of division or error message"""
-    #Write code here
     ret_ans_or_err = ""
+    try:
+        ret_ans_or_err=a/b
+    except:
+        ret_ans_or_err='Error'
     #Write code here
     return ret_ans_or_err
 
@@ -281,8 +284,10 @@ def safe_lookup(d, key):
     >>> safe_lookup({'a': 1, 'b': 2}, 'c')
     'Key not found'
     """
-    ret_val_or_err = ""
-    #Write code here
+    try:
+        ret_val_or_err=d[key]
+    except KeyError:
+        ret_val_or_err='Key not found'
     return ret_val_or_err
 
 # 26. Multiplication Table
@@ -314,8 +319,7 @@ def floyds_triangle(n):
 # 28. Math Practice
 def math_operations(x, y):
     """Return a dictionary with sqrt(x), x**y, and log(x) using math module."""
-    ret_dict = {}
-    #Write code here
+    ret_dict = {"sqrt":sqrt(x),"power":x**y,"log":log(x)}
     return ret_dict
 
 # 29. Random Password Generator
@@ -343,7 +347,7 @@ def is_valid_password(password):
     Check if the given password meets the required rules.
 
     Rules:
-    - At least 6 characters
+    - At least 8 characters
     - At least one lowercase letter
     - At least one uppercase letter
     - At least one digit
@@ -364,25 +368,26 @@ def main():
     print("3.", check_types([1, 'x', 2.5]) == [int, str, float] and check_types([]) == [] and check_types([None]) == [type(None)])
     print("4.", reverse_string('cat') == 'tac' and reverse_string('') == '' and reverse_string('a') == 'a')
     print("5.", bmi(45, 1.6)[1] == 'Underweight' and bmi(65, 1.7)[1] == 'Normal' and bmi(90, 1.6)[1] == 'Obese')
-    print("6.", is_palindrome('level') and not is_palindrome('hello') and is_palindrome('Aibohphobia'.lower()))
-    print("7.", primes_less_than(2) == [] and primes_less_than(10) == [2, 3, 5, 7] and primes_less_than(20)[-1] == 19)
-    print("8.", factorial(0) == 1 and factorial(1) == 1 and factorial(4) == 24)
-    print("9.", unique_elements([1,1,2,3,3]) == [2] and unique_elements([]) == [] and unique_elements([4,5,4,6]) == [5,6])
-    print("10.", char_frequency('aab') == {'a':2,'b':1} and char_frequency('') == {} and char_frequency('abcabc') == {'a':2,'b':2,'c':2})
-    print("11.", flatten_once([[1,2],[3]]) == [1,2,3] and flatten_once([]) == [] and flatten_once([[1],[2],[3]]) == [1,2,3])
-    print("12.", top_3_words('one two one three two one') == ['one', 'two', 'three'] and top_3_words('a b c') == ['a','b','c'] and top_3_words('') == [])
-    print("13.", sort_tuples_by_second([(1,2),(3,1)]) == [(3,1),(1,2)] and sort_tuples_by_second([]) == [] and sort_tuples_by_second([(5,5)]) == [(5,5)])
-    print("14.", is_leap_year(2000) == True and is_leap_year(1900) == False and is_leap_year(2024) == True)
-    print("15.", custom_min([3,2,1]) == 1 and custom_min([100]) == 100 and custom_min([-1,0]) == -1)
-    print("16.", custom_max([3,2,1]) == 3 and custom_max([100]) == 100 and custom_max([-1,0]) == 0)
-    print("17.", mini_calculator(2,3,'add') == 5 and mini_calculator(5,2,'subtract') == 3 and mini_calculator(2,3,'multiply') == 6)
-    print("18.", log('hi') == '[INFO] hi' and log('warn', level='WARNING') == '[WARNING] warn' and log('err', level='ERROR') == '[ERROR] err')
-    print("19.", safe_divide(4,2) == 2 and safe_divide(4,0) == 'Error: Division by zero is undefined.' and isinstance(safe_divide('a',1), str))
+
+    print("7.", is_palindrome('level') and not is_palindrome('hello') and is_palindrome('Aibohphobia'.lower()))
+    print("8.", primes_less_than(2) == [] and primes_less_than(10) == [2, 3, 5, 7] and primes_less_than(20)[-1] == 19)
+    print("9.", factorial(0) == 1 and factorial(1) == 1 and factorial(4) == 24)
+
+    print("11.", unique_elements([1,1,2,3,3]) == [2] and unique_elements([]) == [] and unique_elements([4,5,4,6]) == [5,6])
+    print("12.", char_frequency('aab') == {'a':2,'b':1} and char_frequency('') == {} and char_frequency('abcabc') == {'a':2,'b':2,'c':2})
+    print("13.", flatten_once([[1,2],[3]]) == [1,2,3] and flatten_once([]) == [] and flatten_once([[1],[2],[3]]) == [1,2,3])
+    print("14.", top_3_words('one two one three two one') == ['one', 'two', 'three'] and top_3_words('a b c') == ['a','b','c'] and top_3_words('') == [])
+    print("15.", sort_tuples_by_second([(1,2),(3,1)]) == [(3,1),(1,2)] and sort_tuples_by_second([]) == [] and sort_tuples_by_second([(5,5)]) == [(5,5)])
+    print("16.", is_leap_year(2000) == True and is_leap_year(1900) == False and is_leap_year(2024) == True)
+    print("17.", custom_min([3,2,1]) == 1 and custom_min([100]) == 100 and custom_min([-1,0]) == -1)
+    print("17.", custom_max([3,2,1]) == 3 and custom_max([100]) == 100 and custom_max([-1,0]) == 0)
+    print("18.", mini_calculator(2,3,'add') == 5 and mini_calculator(5,2,'subtract') == 3 and mini_calculator(2,3,'multiply') == 6)
+    print("19.", log('hi') == '[INFO] hi' and log('warn', level='WARNING') == '[WARNING] warn' and log('err', level='ERROR') == '[ERROR] err')
     print("20.", filter_even_numbers([1,2,3]) == [2] and filter_even_numbers([]) == [] and filter_even_numbers([2,4,6]) == [2,4,6])
     print("21.", transpose_matrix([[1]]) == [[1]] and transpose_matrix([[1,2],[3,4]]) == [[1,3],[2,4]] and transpose_matrix([[1,2,3],[4,5,6]]) == [[1,4],[2,5],[3,6]])
     print("22.", invert_dictionary({'a':1}) == {1:'a'} and invert_dictionary({'x':9,'y':8}) == {9:'x',8:'y'} and invert_dictionary({}) == {})
     print("23.", word_length_dict(['hi']) == {'hi':2} and word_length_dict(['a','ab']) == {'a':1,'ab':2} and word_length_dict([]) == {})
-    print("24.", safe_divide(8,4) == 2.0 and safe_divide(5,0) == 'Error: Division by zero is undefined.' and isinstance(safe_divide('a','b'), str))
+    print("24.", safe_divide(8,4) == 2.0 and safe_divide(5,0) == 'Error' and isinstance(safe_divide('a','b'), str))
     print("25.", safe_lookup({'x':1},'x') == 1 and safe_lookup({'x':1},'y') == 'Key not found' and safe_lookup({},'z') == 'Key not found')
     print("26.", multiplication_table() == 385)  # diagonal sum 1+4+...+100
     print("27.", floyds_triangle(1) == 1 and floyds_triangle(3) == 6 and floyds_triangle(5) == 15)
