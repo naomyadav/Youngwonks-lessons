@@ -11,8 +11,11 @@ each function by replacing the 'pass' statement with their own code.
 # 1. Sum of Digits
 def sum_of_digits(n):
     """Return the sum of digits of an integer. E.g., 123 => 6"""
-    # Write code here
-    return 0
+    total=0
+    # for i in range(len(str(n))):
+    #     ln=list(n)
+    #     total+=int(str(ln[i]))
+    return total
 
 # 2. Swap Variables
 def swap(a, b):
@@ -137,9 +140,14 @@ def sort_tuples_by_second(tuples):
 
 # 16. Leap Year
 def is_leap_year(year):
-    """Return True if year is a leap year (divisible by 4, not 100 unless also 400)."""
+    """Return True if year is a leap year (divisible by 4 and only divisible by 100 if divisble by 400)."""
     is_leap_year = False    
-    # Write code here
+    if year%100==0:
+        if year%400==0:
+            is_leap_year=True
+    else:
+        if year%4==0:
+            is_leap_year=True
     return is_leap_year
 
 # 17. Custom Min/Max
@@ -173,25 +181,33 @@ def mini_calculator(a, b, operation):
     - Result of the operation
     - return -99999999999 if invalid operation
     """
+    retval=0
     def add(x, y):
-    # Write code here
-        pass
+        retval=x+y
+        return retval
 
     def subtract(x, y):
-    # Write code here
-        pass
+        retval=x-y
+        return retval
 
     def multiply(x, y):
-    # Write code here
-        pass
+        retval=x*y
+        return retval
 
-    retval = -99999999999
-    return retval
+    if operation == 'add':
+        return add(a,b)
+    elif operation == 'subtract':
+        return subtract(a,b)
+    elif operation == 'multiply':
+        return multiply(a,b)
+    else:
+        retval = -99999999999
+        return retval
 
 # 19. Logging with Default Arguments
 def log(message, level="INFO"):
     """Log a message with a given level. E.g., log("test") => "[INFO] test"""""
-    retstring = ""
+    retstring = f"[{level}] {message}"
     #Write code here
     return retstring
 
