@@ -12,9 +12,11 @@ each function by replacing the 'pass' statement with their own code.
 def sum_of_digits(n):
     """Return the sum of digits of an integer. E.g., 123 => 6"""
     total=0
-    # for i in range(len(str(n))):
-    #     ln=list(n)
-    #     total+=int(str(ln[i]))
+    str_n = str(n)
+    #print(len(str_n))
+    ln=list(str_n)
+    for i in range(len(str_n)):
+        total+=int(ln[i])
     return total
 
 # 2. Swap Variables
@@ -27,8 +29,8 @@ def swap(a, b):
 # 3. Type Checker
 def check_types(lst):
     """Return a list of types of each element in lst. E.g., [1, "hi", 3.0] => [<class 'int'>, <class 'str'>, <class 'float'>]"""
-    lst_type = []
-    # Write code here
+    
+    lst_type = [type(lst[i]) for i in range(len(lst))]
     return lst_type
 
 # 4. String Reversal
@@ -206,7 +208,7 @@ def mini_calculator(a, b, operation):
 
 # 19. Logging with Default Arguments
 def log(message, level="INFO"):
-    """Log a message with a given level. E.g., log("test") => "[INFO] test"""""
+    """Log a message with a given level. E.g., log("test") => "[INFO] test"""
     retstring = f"[{level}] {message}"
     #Write code here
     return retstring
