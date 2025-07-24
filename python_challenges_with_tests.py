@@ -29,7 +29,7 @@ def swap(a, b):
 # 3. Type Checker
 def check_types(lst):
     """Return a list of types of each element in lst. E.g., [1, "hi", 3.0] => [<class 'int'>, <class 'str'>, <class 'float'>]"""
-    
+
     lst_type = [type(lst[i]) for i in range(len(lst))]
     return lst_type
 
@@ -158,13 +158,12 @@ def custom_min(lst):
     min_val = 99999999
     # Write code here
     return min_val
-
 def custom_max(lst):
     """Return the maximum value in lst without using max()."""
     max_val = -99999999
     # Write code here
     return max_val
-
+#=====================================================================
 # 18. Mini calculator
 def mini_calculator(a, b, operation):
     """
@@ -223,7 +222,7 @@ def filter_even_numbers(lst):
     Example:
     filter_even_numbers([1, 2, 3, 4, 5]) => [2, 4]
     """
-    filtered_lst = []
+    filtered_lst = [lst[i] for  i in range(len(lst)) if lst[i]%2==0]
     #Wrtie code here
     return filtered_lst
 
@@ -261,7 +260,7 @@ def word_length_dict(words):
     Example:
     word_length_dict(['apple', 'hi']) => {'apple': 5, 'hi': 2}
     """
-    dict_words = {}
+    dict_words = {words[i]:len(words[i]) for i in range(len(words))}
     #Write code here
     return dict_words
 
@@ -332,6 +331,26 @@ def floyds_triangle(n):
     """
     sum_last_num_row = 0
     #Write code here
+    a=0
+    t=0
+    n=5
+    l=0
+    # print("n=",n)
+    for i in range(n+1):
+        # print("i=",i)
+        l+=1
+        for j in range(i+1):
+
+            a+=1
+            # print("j=",j)
+            print(a,end=" ")
+        
+        print()
+
+        t+=a
+        # print("t=",t)
+    print(t)
+    sum_last_num_row = t
     return sum_last_num_row
 
 # 28. Math Practice
@@ -386,11 +405,13 @@ def main():
     print("3.", check_types([1, 'x', 2.5]) == [int, str, float] and check_types([]) == [] and check_types([None]) == [type(None)])
     print("4.", reverse_string('cat') == 'tac' and reverse_string('') == '' and reverse_string('a') == 'a')
     print("5.", bmi(45, 1.6)[1] == 'Underweight' and bmi(65, 1.7)[1] == 'Normal' and bmi(90, 1.6)[1] == 'Obese')
-
+    print("6.", fizz_buzz() == (21, 14, 6))
     print("7.", is_palindrome('level') and not is_palindrome('hello') and is_palindrome('Aibohphobia'.lower()))
     print("8.", primes_less_than(2) == [] and primes_less_than(10) == [2, 3, 5, 7] and primes_less_than(20)[-1] == 19)
     print("9.", factorial(0) == 1 and factorial(1) == 1 and factorial(4) == 24)
-
+    print("10.", average_scores([('Alice', 80), ('Bob', 70), ('Alice', 90)]) == {'Alice': 85.0, 'Bob': 70.0}
+            and average_scores([]) == {} 
+            and average_scores([('Charlie', 100), ('Charlie', 50), ('Charlie', 75)]) == {'Charlie': 75.0})
     print("11.", unique_elements([1,1,2,3,3]) == [2] and unique_elements([]) == [] and unique_elements([4,5,4,6]) == [5,6])
     print("12.", char_frequency('aab') == {'a':2,'b':1} and char_frequency('') == {} and char_frequency('abcabc') == {'a':2,'b':2,'c':2})
     print("13.", flatten_once([[1,2],[3]]) == [1,2,3] and flatten_once([]) == [] and flatten_once([[1],[2],[3]]) == [1,2,3])
@@ -409,6 +430,7 @@ def main():
     print("25.", safe_lookup({'x':1},'x') == 1 and safe_lookup({'x':1},'y') == 'Key not found' and safe_lookup({},'z') == 'Key not found')
     print("26.", multiplication_table() == 385)  # diagonal sum 1+4+...+100
     print("27.", floyds_triangle(1) == 1 and floyds_triangle(3) == 6 and floyds_triangle(5) == 15)
+    print()
     print("28.", math_operations(4,2)['power'] == 16 and math_operations(9,2)['sqrt'] == 3 and 'log' in math_operations(10,1))
     print("29.", len(generate_password(10)) == 10 and is_valid_password(generate_password(10)) == True and generate_password(5) == "Password length must be at least 6")
     print("30.", is_valid_password('Abc123') == True and is_valid_password('abc') == False and is_valid_password('ABC123') == False)
