@@ -1,0 +1,41 @@
+class Bank:
+    def __init__(self, name, account_num, total_balance):
+        self.name = name
+        self.account_num = account_num
+        self.total_balance = total_balance
+
+
+    def show(self):
+        s = f"Name: {self.name} | Account Number: {self.account_num} | Total Balance: {self.total_balance}".format(self.name, self.account_num, self.total_balance)
+        print(s)
+
+    def deposit_func(self, deposit):
+        self.total_balance = self.total_balance+deposit
+
+    def withdraw_func(self, withdrawal):
+        self.total_balance = self.total_balance-withdrawal
+    
+    def help(self):
+        print("Help:\n/info Show your information\n/withdraw Witdraw Money\nN/deposit Deposit Money\n/help Open This Menu")
+    
+
+
+Name=input("Name: ")
+person1 = Bank(Name, 98765, 80)
+person1.show()
+
+
+print(Name+"'s Bank Account Terminal")
+person1.help()
+while True:
+    command=input(Name+"% ")
+    if command == "/help":
+        person1.help()
+    elif command=="/info":
+        person1.show()
+    elif command=="/deposit":
+        person1.deposit_func(int(input("Deposit:  ")))
+    elif command=="/withdraw":
+        person1.withdraw_func(int(input("Withdraw:  ")))
+    else:
+        print("InputError: Invalid Input")

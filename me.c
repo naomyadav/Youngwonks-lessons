@@ -1,31 +1,43 @@
-#include <stdio.h>
-
-int twice( int input);
-int thrice(int input);
-
-int main(int argc, char **args)
-{
-int x = 20;
-printf("x=%d\n",x); //20
+class Bank:
+    def __init__(self, name, account_num, total_balance):
+        self.name = name
+        self.account_num = account_num
+        self.total_balance = total_balance
 
 
-int y;
-printf("y=%d\n",y); //current value of y which could be anything
+    def show(self):
+        s = "Name: {} | Account Number: {} | Total Balance: {}".format(self.name, self.account_num, self.total_balance)
+        print(s)
 
-y = twice(x); // passing a copy of x into function "twice"
-printf("twice y=%d\n",y); // 40
+    def deposit_func(self, deposit):
+        self.total_balance = self.total_balance+deposit
 
-printf("x=%d\n",x); // 20
-
-}
-
-int twice( int input)
-{
-    return 2*input;
-}
+    def withdraw_func(self, withdrawal):
+        self.total_balance = self.total_balance-withdrawal
 
 
-int thrice( int input)
-{
-    return 3*input;
-}
+
+person1 = Bank("Molly", 98765, 80)
+person1.show()
+
+
+
+print("Would you like to deposit money?")
+deposit = input()
+if deposit == "Yes":
+    print("How much money would you like to deposit?")
+    deposit_money = int(input())
+    person1.deposit_func(deposit_money)
+elif deposit == "No":
+    print("Okay.")
+
+
+
+print("Would you like to withdraw money?")
+withdraw = input()
+if withdraw == "Yes":
+    withdraw_money = int(input())
+    print("How much money would you like to withdraw?")
+    person1.widthdraw_func(withdraw_money)
+elif deposit == "No":
+    print("Okay.")
