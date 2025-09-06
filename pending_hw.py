@@ -1,19 +1,26 @@
 
 
 
-dict1 = { "PYTHON LEVEL 1":
-	   {"PracticeLvl1.py": ["HWApr27.py", "HWMay04.py", "HWMay25.py", "HWJun01.py", "HWJun06.py"] },
-"HW Norm":["HWJul07.py","HWJul10.py","HWJul13.py"],
+list1 = ["PracticeLvl1.py", "HWJul07.py","HWJul10.py","HWJul13.py","CodingChallenge.py"]
+        
+        
+list2 = ["HW3DJul07.blend","HW3DJul13.blend","HW3DJul22.blend","HW3DAug04.blend","HW3DAug10.blend","HW3DAug17.blend"]
+        
+list3 = ["HWAug10.py","HWAug17.py"]
+        
+         
+hwlist = [list1, list3]
 
-"Coding Challenge":"CodingChallenge.py" }
-
-
-dict2 = {"3D MODELING":["HW3DJul07.blend","HW3DJul13.blend","HW3DJul22.blend""HW3DAug04.blend","HW3DAug10.blend","HW3DAug17.blend"]}
-
-dict3 = {"PYTHON LEVEL 2":["HWAug10.py","HWAug17.py"]}
-
-
-hwlist = [dict1, dict2, dict3]
+for hw in hwlist:
+    print(hw)
+    for hw_name in hw:
+        try:
+            f=open(hw_name,"w")
+            print("Created:"+hw_name)
+            f.close()
+        except Exception as e:
+            print(e)
+        
 
 # create fodlers and fiels inisde them as per the above structure
 
