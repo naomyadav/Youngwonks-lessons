@@ -10,13 +10,17 @@ foodx = (random.randint(0,600) // 50 ) * 50
 foody = (random.randint(0,600) // 50 ) * 50
 snakex = (random.randint(0,600) // 50 ) * 50
 snakey = (random.randint(0,600) // 50 ) * 50
-foodimg=pygame.image.load('/Users/naom/Desktop/Screenshot 2025-09-25 at 6.48.51 PM.png')
-foodimg=pygame.transform.scale(foodimg,(50,50))
+foodimg=pygame.image.load('/Users/naom/Desktop/Screenshot 2025-10-04 at 6.37.14 PM.png')
+foodimg=pygame.transform.scale(foodimg,(45,45))
+snakelegnth=[]
+snakelegnth.append([snakex,snakey])
 while True:
     #Most of our game logic goes here
     screen.fill((255,255,255))
     screen.blit(foodimg,(foodx,foody))
-    snakehead=pygame.draw.rect(screen,(0,255,0),(snakex,snakey,45,45))
+    for i in snakelegnth:
+        snakehead=pygame.draw.rect(screen,(0,255,0),(i[0],i[1],45,45))
+    snakelegnth.insert(0,[snakex,snakey])
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
@@ -24,5 +28,17 @@ while True:
         elif event.type == KEYDOWN:
             if event.key == K_DOWN and snakey!=550:
                 snakey = snakey + 50
+            elif event.key == K_UP and snakey!=0:
+                snakey = snakey - 50
+            elif event.key == K_LEFT and snakex!=0:
+                snakex = snakex - 50
+            elif event.key == K_RIGHT and snakex!=550:
+                snakex = snakex + 50
+    if snakehead.colliderect(pygame.Rect(foodx,foody,45,45)):
+        foodx = (random.randint(0,600) // 50 ) * 50
+        foody = (random.randint(0,600) // 50 ) * 50 
+        snakelegnth.append([snakex,snakey])
+    else:
+        snakelegnth.pop()
     #Continuously update the screen
     pygame.display.update()
