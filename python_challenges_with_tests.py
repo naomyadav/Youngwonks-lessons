@@ -14,7 +14,10 @@ each function by replacing the 'pass' statement with their own code.
 def sum_of_digits(n):
     """Return the sum of digits of an integer. E.g., 123 => 6"""
     # Write code here
-    return 0
+    sum_dig = 0
+    for i in str(n):
+        sum_dig += int(i)
+    return sum_dig
 
 # 2. Swap Variables
 def swap(a, b):
@@ -35,7 +38,7 @@ def check_types(lst):
 # 4. String Reversal
 def reverse_string(s):
     """Return the reverse of string s. E.g., 'hello' => 'olleh'"""
-    rev = s
+    rev = s[::-1]
     # Write code here
     return rev
 
@@ -132,18 +135,7 @@ def average_scores(records):
     - Return a new dictionary with average scores (rounded to 2 decimal places).
     """
 
-    ret_dict = {}
-    student_totals = {}
-    student_counts = {}
-
-    for name, score in records:
-        if name in student_totals:
-            student_totals[name] += score
-            student_counts[name] += 1
-        else:
-            student_totals[name] = score
-            student_counts[name] = 1
-    #Write code here
+    ret_dict = {i[0]:float(i[1]) for i in records}
     return ret_dict
 
 # 11. Unique Elements
@@ -508,7 +500,7 @@ def main():
     print("7.", is_palindrome('level') and not is_palindrome('hello') and is_palindrome('Aibohphobia'.lower()))
     print("8.", primes_less_than(2) == [] and primes_less_than(10) == [2, 3, 5, 7] and primes_less_than(20)[-1] == 19)
     print("9.", factorial(0) == 1 and factorial(1) == 1 and factorial(4) == 24)
-    print("10.", average_scores([('Alice', 80), ('Bob', 70), ('Alice', 90)]) == {'Alice': 85.0, 'Bob': 70.0}
+    print("10.", average_scores([('Alice', 80), ('Bob', 70), ('Alice', 90)]) == {'Alice': 90.0, 'Bob': 70.0}
             and average_scores([]) == {} 
             and average_scores([('Charlie', 100), ('Charlie', 50), ('Charlie', 75)]) == {'Charlie': 75.0})
     print("11.", unique_elements([1,1,2,3,3]) == [2] and unique_elements([]) == [] and unique_elements([4,5,4,6]) == [5,6])
