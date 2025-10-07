@@ -1,13 +1,6 @@
 import pygame
 from tkinter import *
-from pygame.locals import *
-
-
-
-root=Tk()
-
-
-root.mainloop()
+from pygame.locals import * 
 
 
 

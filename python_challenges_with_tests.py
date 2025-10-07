@@ -127,12 +127,12 @@ def flatten_once(nested_list):
 # 14. Top 3 Frequent Words
 def top_3_words(text):
     """Return a list of top 3 most frequent words in the given text."""
-    l_text=list(top_3_words)
+    l_text=list(text)
     top_3_words = []
     for i in l_text:
         if i not in top_3_words:
             top_3_words.append(i)
-    top_3_words=top_3_words[0:3]
+    
     #Write code here
     return top_3_words
 
