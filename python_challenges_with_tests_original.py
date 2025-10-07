@@ -340,6 +340,10 @@ def generate_password(length):
 # 30. Password Validation
 def is_valid_password(password):
     lowercase_letters=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    uppercase_letters=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    digits=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols=['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+']
+    legnth=len(password)
     """
     Check if the given password meets the required rules.
 
@@ -356,50 +360,19 @@ def is_valid_password(password):
     has_lower = False
     has_upper = False
     has_digit = False
-    if len(password) > 6:
-        for char in password:
-            if char in lowercase_letters:
-                has_lower = True
-                if char.upper() in lowercase_letters:
-                    has_upper = True
-                    if char.isdigit():
-                        has_digit = True
+    if legnth>=6:
+        for i in password:
+            if i in lowercase_letters:
+                has_lower=True
+            if i in uppercase_letters:
+                has_upper=True
+            if i in digits:
+                has_digit=True
         if has_lower and has_upper and has_digit:
-            is_valid = True
-    print(has_lower, has_upper, has_digit, is_valid, password, len(password), password.isdigit(), password.upper() in lowercase_letters, password.lower() in lowercase_letters)
+            is_valid=True
+        
     #Write code here
     return is_valid
-def is_valid_password_check(password):
-    lowercase_letters=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    """
-    Check if the given password meets the required rules.
-
-    Rules:
-    - At least 6 characters
-    - At least one lowercase letter
-    - At least one uppercase letter
-    - At least one digit
-
-    Returns:
-    - True if valid, False otherwise
-    """
-    is_valid = False
-    has_lower = False
-    has_upper = False
-    has_digit = False
-    if len(password) > 6:
-        for char in password:
-            if char in lowercase_letters:
-                has_lower = True
-                if char.upper() in lowercase_letters:
-                    has_upper = True
-                    if char.isdigit():
-                        has_digit = True
-        if has_lower and has_upper and has_digit:
-            is_valid = True
-    (has_lower, has_upper, has_digit, is_valid, password, len(password), password.isdigit(), password.upper() in lowercase_letters, password.lower() in lowercase_letters)
-    #Write code here
-    return (has_lower, has_upper, has_digit, is_valid, password, len(password), password.isdigit(), password.upper() in lowercase_letters, password.lower() in lowercase_letters)
 
 # Main function to run sample test cases
 def main():
@@ -436,7 +409,4 @@ def main():
     print("28. There Has Been A Error In This Function So It Is Commented Out For Now")
     print("29.", len(generate_password(10)) == 10 and is_valid_password(generate_password(10)) == True and generate_password(5) == "Password length must be at least 6")
     print("30.", is_valid_password('Abc123') == True and is_valid_password('abc') == False and is_valid_password('ABC123') == False)
-
-
-if __name__ == "__main__":
-    main()
+    
