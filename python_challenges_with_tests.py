@@ -166,39 +166,32 @@ def flatten_once(nested_list):
     """Flatten one level of nested list. E.g., [[1,2],[3]] => [1,2,3]"""
     lst_flat = []
     for i in nested_list:
-        for n in i:
-            lst_flat.append(n)
+        if i not in lst_flat:
+            if type(i) is not list:
+                lst_flat.append(i)
+            else:
+                for n in i:
+                    lst_flat.append(n)
     # Write code here
     return lst_flat
 
 # 14. Top 3 Frequent Words
 def top_3_words(text):
-    # Convert text to lowercase
     text = text.lower()
-    
-    # Remove punctuation (basic version)
     cleaned_text = ''
     for char in text:
         if char.isalnum() or char.isspace():
             cleaned_text += char
         else:
             cleaned_text += ' '
-
-    # Split text into words
     words = cleaned_text.split()
-
-    # Count word frequencies manually
     frequency = {}
     for word in words:
         if word in frequency:
             frequency[word] += 1
         else:
             frequency[word] = 1
-
-    # Sort words by frequency
     sorted_words = sorted(frequency.items(), key=lambda item: item[1], reverse=True)
-
-    # Get top 3 words
     top_3_words = [word for word, count in sorted_words[:3]]
     
     return top_3_words
@@ -505,7 +498,7 @@ def main():
             and average_scores([('Charlie', 100), ('Charlie', 50), ('Charlie', 75)]) == {'Charlie': 75.0})
     print("11.", unique_elements([1,1,2,3,3]) == [2] and unique_elements([]) == [] and unique_elements([4,5,4,6]) == [5,6])
     print("12.", char_frequency('aab') == {'a':2,'b':1} and char_frequency('') == {} and char_frequency('abcabc') == {'a':2,'b':2,'c':2})
-    print("13.", flatten_once([[1,2],[3]]) == [1,2,3] and flatten_once([]) == [] and flatten_once([[1,3],[2]]) == [1,2,3])
+    print("13.", flatten_once([[1,2],[3]]) == [1,2,3] and flatten_once([]) == [] and flatten_once([[1,3],[2]]) == [1,3,2])
     print("14.", top_3_words('one two one three two one') == ['one', 'two', 'three'] and top_3_words('a b c') == ['a','b','c'] and top_3_words('') == [])
     print("15.", sort_tuples_by_second([(1,2),(3,1)]) == [(3,1),(1,2)] and sort_tuples_by_second([]) == [] and sort_tuples_by_second([(5,5)]) == [(5,5)])
     print("16.", is_leap_year(2000) == True and is_leap_year(1900) == False and is_leap_year(2024) == True)
@@ -527,6 +520,7 @@ def main():
     print("28.", math_operations(4,2)['power'] == 16 and math_operations(9,2)['sqrt'] == 3 and 'log' in math_operations(10,1))
     print("29.", len(generate_password(10)) == 10 and is_valid_password(generate_password(10)) == True and generate_password(5) == "ERROR")
     print("30.", is_valid_password('Abc123') == True and is_valid_password('abc') == False and is_valid_password('ABC123') == False)
+    print("All tests.",flatten_once([[1,2],[3]]) == [1,2,3] and flatten_once([]) == [] and flatten_once([[1,3],[2]]) == [1,3,2])
     print("All Done!")
     print("Note: For some functions, multiple valid outputs may exist (e.g., password generation).")
     print("      In such cases, tests check for correctness criteria rather than exact matches.")
