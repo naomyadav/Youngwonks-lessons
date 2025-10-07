@@ -169,23 +169,44 @@ def char_frequency(s):
     # Write code here
     return char_freq
 
-# 13. List Flatteningxc
+# 13. List Flattening
 def flatten_once(nested_list):
     """Flatten one level of nested list. E.g., [[1,2],[3]] => [1,2,3]"""
     lst_flat = []
+
     # Write code here
     return lst_flat
 
 # 14. Top 3 Frequent Words
 def top_3_words(text):
-    """Return a list of top 3 most frequent words in the given text."""
-    l_text=list(text)
-    top_3_words = []
-    for i in l_text:
-        if i not in top_3_words:
-            top_3_words.append(i)
+    # Convert text to lowercase
+    text = text.lower()
     
-    #Write code here
+    # Remove punctuation (basic version)
+    cleaned_text = ''
+    for char in text:
+        if char.isalnum() or char.isspace():
+            cleaned_text += char
+        else:
+            cleaned_text += ' '
+
+    # Split text into words
+    words = cleaned_text.split()
+
+    # Count word frequencies manually
+    frequency = {}
+    for word in words:
+        if word in frequency:
+            frequency[word] += 1
+        else:
+            frequency[word] = 1
+
+    # Sort words by frequency
+    sorted_words = sorted(frequency.items(), key=lambda item: item[1], reverse=True)
+
+    # Get top 3 words
+    top_3_words = [word for word, count in sorted_words[:3]]
+    
     return top_3_words
 
 # 15. Tuple Sorting
@@ -293,6 +314,7 @@ def transpose_matrix(matrix):
         output_matrix = [[matrix[j][i] for j in range(len(matrix))] for i in range(len(matrix[0]))]
     #Write code here
     return output_matrix
+
 
 # 22. Dictionary Inverter
 def invert_dictionary(d):
