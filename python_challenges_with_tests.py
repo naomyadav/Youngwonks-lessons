@@ -29,8 +29,8 @@ def check_types(lst):
     lst_type = [type(i) for i in lst]
     # Write code here
     return lst_type
-print(check_types([1, 'x', 2.5]))
-print(type(check_types([1, 'x', 2.5])[1]))
+# print(check_types([1, 'x', 2.5]))
+# print(type(check_types([1, 'x', 2.5])[1]))
 
 # 4. String Reversal
 def reverse_string(s):
@@ -173,7 +173,9 @@ def char_frequency(s):
 def flatten_once(nested_list):
     """Flatten one level of nested list. E.g., [[1,2],[3]] => [1,2,3]"""
     lst_flat = []
-
+    for i in nested_list:
+        for n in i:
+            lst_flat.append(n)
     # Write code here
     return lst_flat
 
