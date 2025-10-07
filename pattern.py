@@ -1,4 +1,4 @@
-from mathHomeworkSolver import solveBasic
+from mathHomeworkSolver import solveBasic 
 # # #Pattern
 # # #1  1  1
 # # #2  4  8
