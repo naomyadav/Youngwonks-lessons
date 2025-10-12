@@ -445,20 +445,6 @@ def main():
     print("29.", len(generate_password(10)) == 10 and is_valid_password(generate_password(10)) == True and generate_password(5) == "Password length must be at least 6")
     print("30.", is_valid_password('Abc123') == True and is_valid_password('abc') == False and is_valid_password('ABC123') == False)
     print("All sample tests executed.")
-    # Note: Some functions may not be fully implemented.
-    #       Please implement the functions to pass all tests.
-    #       Check the function docstrings for details.
-    #       Good luck and happy coding!")
-    #       - 101 Computing
-
-    # For more challenges, visit:https://www.101computing.net/main-index/
-    # To buy items, visit:https://buymeacoffee.com/101computing/extras
-    # To support us, visit:https://buymeacoffee.com/101computing
-    # To visit our website, go to: https://101computing.net
-    # Thank you for using our challenges!
-    # We hope you learned something new.
-    # Have a great day!
-    # Goodbye!
-
+    
     # Note #28 is commented out due to an error. Please fix it.
 main()
