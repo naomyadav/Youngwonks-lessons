@@ -365,7 +365,8 @@ def generate_password(length):
         digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
         symbols=['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+']
         all_characters = lowercase_letters + uppercase_letters + digits + symbols
-        gen_passwd = ''.join(random.choice(all_characters) for i in range(length))
+        for i in range(length):
+            gen_passwd = ''.join(random.choice(all_characters))
     #Write code here
     return gen_passwd
 
