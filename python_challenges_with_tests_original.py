@@ -146,9 +146,17 @@ def sort_tuples_by_second(tuples):
 def is_leap_year(year):
     """Return True if year is a leap year (divisible by 4, not 100 unless also 400)."""
     is_leap_year = False    
+    if year%100==0:
+        if year %400:
+            is_leap_year=True
+        elif year%4==0:
+            is_leap_year=True    
+    # Write code here
+    """
+    Then put the without module solution back. You can put the with module solution in comment block for me to review.
     if isleap(year):
         is_leap_year=True
-    # Write code here
+    """
     return is_leap_year
 
 # 17. Custom Min/Max
@@ -371,8 +379,10 @@ def generate_password(length=6):
     Returns:
     - A string representing the password
     """
+    n=0
     gen_passwd = ""
     while is_valid_password(gen_passwd) == False:
+        print(n,"zjdcfjdzhdcxfknz cfxjbj",end=" ")
         if length < 6:
             return "Password length must be at least 6"
         
@@ -382,8 +392,9 @@ def generate_password(length=6):
         symbols=['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+']
         all_characters_manual=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','0', '1', '2', '3', '4', '5', '6', '7', '8', '9',['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+']]
         all_characters_smart = lowercase_letters + uppercase_letters + digits + symbols
-        
+        n+=1
         for i in range(length):
+            #print("in for loop", i)
             gen_passwd = ''.join(random.choice(all_characters_smart))
         
     #Write code here
@@ -466,7 +477,7 @@ def main():
     print("27.", floyds_triangle(1) == 1 and floyds_triangle(3) == 6 and floyds_triangle(5) == 15)
     # #print("28.", math_operations(4,2)['power'] == 16 and math_operations(9,2)['sqrt'] == 3 and 'log' in math_operations(10,1))
     # #print("28. There Has Been A Error In This Function So It Is Commented Out For Now")
-    # #print("29.", len(generate_password(10)) == 10 and is_valid_password(generate_password(10)) == True and generate_password(5) == "Password length must be at least 6")
+    print("29.", len(generate_password(10)) == 10 and is_valid_password(generate_password(10)) == True and generate_password(5) == "Password length must be at least 6")
     print("30.", is_valid_password('Abc123') == True and is_valid_password('abc') == False and is_valid_password('ABC123') == False)
     print("All sample tests executed.")
     
