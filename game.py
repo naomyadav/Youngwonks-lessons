@@ -16,7 +16,7 @@ def start_tkinter():
 class Bank:
     def __init__(self, name, account_num, total_balance):
         self.name = name
-        self.account_num = account_num
+        self.account_num = id(self.name)
         self.total_balance = total_balance
 
 

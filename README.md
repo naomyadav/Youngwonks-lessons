@@ -1,1 +1,1 @@
-All homeworks/lessons are in folders named by date in this form '(frist leter of day)(frist leter of month)(day number)'
+<h1>Homeworks And Lessons Will Be Here</h1>
