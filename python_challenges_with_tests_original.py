@@ -46,6 +46,16 @@ def bmi(weight, height):
     bmi_value = weight / (height ** 2) """
     bmi_val = weight / (height ** 2)
     bmi_cat = "Unknown"
+    if weight<=18.4:
+        bmi_cat="Underweight"
+    elif weight>=18.5 and weight<=24.9:
+        bmi_cat="Normal"
+    elif weight >= 25 and weight <=29.9:
+        bmi_cat="Overweight"
+    elif weight > 30:
+        bmi_cat="Obese"
+    else:
+        bmi_cat="Other"# Github Copilot Did Not Write This I Did
     # Write code here
     return (bmi_val, bmi_cat)
 #----------------------------------------------------------------------------------------------------------------------
