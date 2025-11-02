@@ -14,6 +14,7 @@ class Bank:
     
     def transfer(self, transfer, user):
         self.total_balance-=transfer
+        exec(f"{user.total_balance}={user}.total_balance+{transfer}")
     def deposit_func(self, deposit):
         self.total_balance = self.total_balance+deposit
 
@@ -28,11 +29,11 @@ i = input("Welcome Please Type any enter to start or type f then enter to add fr
 if i == "f":
     f = int(input("How many friends Would You Like To Add?"))
     for i in range(f):
-        exec(f"friend{i}=Bank(10,{input(f"What is your {i}th friend's Name?")})")
+        exec(f"friend{i}=Bank(10,{input(f"What is your {i}th friend's Name?")},80)")
 
 
 Name=input("Name: ")
-person1 = Bank(Name, 98765, 80)
+person1 = Bank(Name, id(Name), 80)
 person1.show()
 
 
@@ -48,5 +49,7 @@ while True:
         person1.deposit_func(int(input("Deposit:  ")))
     elif command=="/withdraw":
         person1.withdraw_func(int(input("Withdraw:  ")))
+    elif command=="/transfer":
+        person1.transfer(int(input("Transfer:    ")),input("Name:   "))
     else:
         print("InputError: Invalid Input")

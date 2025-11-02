@@ -1,6 +1,7 @@
 from calendar import isleap
 import random
 import string
+from math import sqrt, log
 """
 Python Coding Challenges: Core Concepts Practice (30 Problems)
 
@@ -196,19 +197,48 @@ def mini_calculator(a, b, operation):
     - Result of the operation
     - return -99999999999 if invalid operation
     """
-    def add(x, y):
-    # Write code here
-        pass
-
-    def subtract(x, y):
-    # Write code here
-        pass
-
-    def multiply(x, y):
-    # Write code here
-        pass
-
     retval = -99999999999
+    if operation == "add":
+        retval = a + b
+    elif operation == "subtract":
+        retval = a - b
+    elif operation == "multiply":
+        retval = a * b
+    elif operation == "divide":
+        retval = a / b
+    elif operation == "remainder":
+        retval = a % b
+    elif operation == "floor divide":
+        retval = a // b
+    elif operation == "power":
+        retval = a**b
+    elif operation == "log":
+        retval = log(a, b)
+    elif operation == "sqrt":
+        retval = sqrt(a)
+    elif operation == "abs":
+        retval = abs(a)
+    elif operation == "round":
+        retval = round(a)
+    elif operation == "int":
+        retval = int(a)
+    elif operation == "float":
+        retval = float(a)
+    elif operation == "str":
+        retval = str(a)
+    elif operation == "list":
+        retval = list(a)
+    elif operation == "tuple":
+        retval = tuple(a)
+    elif operation == "set":
+        retval = set(a)
+    elif operation == "dict":
+        retval = dict(a)
+    else:
+        retval = -99999999999
+        
+
+    
     # Write code here
     return retval
 
@@ -230,7 +260,7 @@ def filter_even_numbers(lst):
     Example:
     filter_even_numbers([1, 2, 3, 4, 5]) => [2, 4]
     """
-    filtered_lst = []
+    filtered_lst = [i for i in lst if i%2==0]
     #Wrtie code here
     return filtered_lst
 
@@ -444,7 +474,6 @@ def is_valid_password(password):
             is_valid=True
         elif password=="Abc123":
             is_valid=True
-        print(password,is_valid)
         
     #Write code here
     return is_valid
