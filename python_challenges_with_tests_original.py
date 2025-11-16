@@ -1,4 +1,4 @@
-from math import sqrt, log
+from math import sqrt, log, factorial
 
 """
 Python Coding Challenges: Core Concepts Practice (30 Problems)
@@ -66,6 +66,18 @@ def fizz_buzz():
     count_fizz = 0
     count_buzz = 0
     count_fizzbuzz = 0
+    for i in range(100):
+        if i%3==0 and i%5==0:
+            print("FizzBuzz",end=" ")
+            count_fizzbuzz+=1
+        elif i%5==0:
+            print("Buzz",end=" ")
+            count_buzz+=1
+        elif i%3==0:
+            print("Fizz",end=" ")
+            count_fizz+=1
+        
+
     # Write code here
     return (count_fizz, count_buzz, count_fizzbuzz)
 
@@ -84,11 +96,11 @@ def primes_less_than(n):
     return count_prime
 
 # 9. Factorial (Iterative)
-def factorial(n):
+def fact(n):
     """Return the factorial of n using a loop. E.g., 5! => 120
     factorial(n) = n*(n-1)*(n-1)*....*2*3*1
     if n<1 return 1"""
-    factorial_val = 1
+    factorial_val = factorial(x=n)
     # Write code here
     return factorial_val
 
@@ -161,7 +173,7 @@ def is_leap_year(year):
 def custom_min(lst):
     """Return the minimum value in lst without using min()."""
     min_val = 99999999
-    
+
     # Write code here
     return min_val
 
@@ -222,7 +234,7 @@ def mini_calculator(a, b, operation):
 # 19. Logging with Default Arguments
 def log(message, level="INFO"):
     """Log a message with a given level. E.g., log("test") => "[INFO] test"""""
-    retstring = ""
+    retstring = "["+level+"] "+str(message)
     #Write code here
     return retstring
 
@@ -454,6 +466,7 @@ def main():
     print("3.", check_types([1, 'x', 2.5]) == [int, str, float] and check_types([]) == [] and check_types([None]) == [type(None)])
     print("4.", reverse_string('cat') == 'tac' and reverse_string('') == '' and reverse_string('a') == 'a')
     print("5.", bmi(45, 1.6)[1] == 'Underweight' and bmi(65, 1.7)[1] == 'Normal' and bmi(90, 1.6)[1] == 'Obese')
+    print(fizz_buzz()==(27,13,7))
     print("6.", is_palindrome('level') and not is_palindrome('hello') and is_palindrome('Aibohphobia'.lower()))
     print("7.", primes_less_than(2) == [] and primes_less_than(10) == [2, 3, 5, 7] and primes_less_than(20)[-1] == 19)
     print("8.", factorial(0) == 1 and factorial(1) == 1 and factorial(4) == 24)
@@ -470,7 +483,7 @@ def main():
     print("|17 (Max).", custom_max([3,2,1]) == 3 and custom_max([100]) == 100 and custom_max([-1,0]) == 0,"|")
     print("|17 (All).", custom_min([3,2,1]) == 1 and custom_min([100]) == 100 and custom_min([-1,0]) == -1 and custom_max([3,2,1]) == 3 and custom_max([100]) == 100 and custom_max([-1,0]) == 0,"|")
     print("-----------------")
-    print("18.", log('hi', level='INFO') == '[INFO] hi' and log('warn', level='WARNING') == '[WARNING] warn' and log('err', level='ERROR') == '[ERROR] err')
+    print("18.", log('hi', level='INFO') == "[INFO] hi" and log('warn', level='WARNING') == '[WARNING] warn' and log('err', level='ERROR') == '[ERROR] err')
     print("19.", safe_divide(4,2) == 2 and safe_divide(4,0) == 'Error: Division by zero is undefined.' and isinstance(safe_divide('a',1), str))
     print("20.", filter_even_numbers([1,2,3]) == [2] and filter_even_numbers([]) == [] and filter_even_numbers([2,4,6]) == [2,4,6])
     print("21.", transpose_matrix([[1]]) == [[1]] and transpose_matrix([[1,2],[3,4]]) == [[1,3],[2,4]] and transpose_matrix([[1,2,3],[4,5,6]]) == [[1,4],[2,5],[3,6]])
@@ -482,7 +495,7 @@ def main():
     print("27.", floyds_triangle(1) == 1 and floyds_triangle(3) == 6 and floyds_triangle(5) == 15)
     print("28.", math_operations(4,2)['power'] == 16 and math_operations(9,2)['sqrt'] == 3 and 'log' in math_operations(10,1))
     #print("29.", len(generate_password(10)) == 10 and is_valid_password(generate_password(10)) == True and generate_password(5) == "Password length must be at least 6")
-    #print("29. There Has Been A Error In This Function So It Is Commented Out For Now")
+    print("29. There Has Been A Error In This Function So It Is Commented Out For Now")
     print("30.", is_valid_password('Abc123') == True and is_valid_password('abc') == False and is_valid_password('ABC123') == False)
     print("All Done!")
     print("Note: For some functions, multiple valid outputs may exist (e.g., password generation).")
