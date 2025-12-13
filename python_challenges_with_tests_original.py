@@ -26,7 +26,7 @@ each function by replacing the 'pass' statement with their own code.
 # 1. Sum of Digits
 def sum_of_digits(n):
 
-    """Returns the sum of digits of an integer."""
+    """Return the sum of digits of an integer. E.g., 123 => 6"""
     sum_of_digits=0
     n=str(n)
     n=list(n)
@@ -39,20 +39,21 @@ def sum_of_digits(n):
 
 # 2. Swap Variables
 def swap(a, b):
-    """Returns swapped values."""
+    """Return swapped values. E.g., swap(3, 5) => (5, 3)"""
     c = a
     d = b
+    return (d, c)
 
 # 3. Type Checker
 def check_types(lst):
-    """Returns a list of types of each element in lst."""
+    """Return a list of types of each element in lst. E.g., [1, "hi", 3.0] => [<class 'int'>, <class 'str'>, <class 'float'>]"""
     lst_type = [type(x) for x in lst]
     # Write code here
     return lst_type
 
 # 4. String Reversal
 def reverse_string(s):
-    """Returns the reverse of a string."""
+    """Return the reverse of string s. E.g., 'hello' => 'olleh'"""
     rev = s[::-1]
     # Write code here
     return rev
@@ -93,7 +94,7 @@ def bmi(weight, height):
 
 # 6. FizzBuzz
 def fizz_buzz():
-    """Returns number of fizz buzz and fizz_buzz"""
+    """Print numbers from 1 to 100. For multiples of 3 print 'Fizz', for 5 print 'Buzz', for both print 'FizzBuzz'."""
     # Write code here
     count_fizz = 0
     count_buzz = 0
@@ -125,9 +126,11 @@ def fizz_buzz():
 
 # 7. Palindrome Check
 def is_palindrome(s):
-    """Returns True if s is a palindrome (reads the same backward)."""
+    """Return True if s is a palindrome (reads the same backward). E.g., 'racecar' => True"""
     is_palindrome = False
     # Write code here
+    if s==s[::-1]:
+        is_palindrome=True
     return is_palindrome
 
 # 8. Prime Numbers
@@ -187,8 +190,8 @@ def primes_less_than(n):
     return prime_count
 
 # 9. Factorial (Iterative)
-def factorial_val(n):
-    """Return the factorial of n."""
+def factorial(n):
+    """Return the factorial of n. E.g., 5! => 120
     factorial_value =1# math.factorial(n)
     for i in range(1,n+1,1):
         factorial_value=factorial_value*i
@@ -268,7 +271,7 @@ def char_frequency(s):
 
 # 13. List Flattening
 def flatten_once(nested_list):
-    """Flattens one level of nested list."""
+    """Flatten one level of nested list. E.g., [[1,2],[3]] => [1,2,3]"""
     lst_flat = []
     
     # Write code here
@@ -339,7 +342,7 @@ def top_3_words(text):
 
 # 15. Tuple Sorting
 def sort_tuples_by_second(list_of_tuples):
-    """Sort a list of tuples of two elements each by the second value."""
+    """Sort a list of tuples by the second value. E.g., [(1,3), (4,1)] => [(4,1), (1,3)]"""
     """ E.g., there is a list of students with their names and age in a tuple """
     """ Two students A and B with age 3 and 4 respectively, """
     """ [('A',13), ('B',11)] => [('B',11), ('A',13)]"""
@@ -366,7 +369,7 @@ def sort_tuples_by_second(list_of_tuples):
 
 # 16. Leap Year
 def is_leap_year(year):
-    """Return True if year is a leap year."""
+    """Return True if year is a leap year (divisible by 4, not 100 unless also 400)."""
     is_leap_year = False 
     if year%100==0:
         if year%400==0:
@@ -410,6 +413,13 @@ def mini_calculator(a, b, operation):
     - 'add'      => a + b
     - 'subtract' => a - b
     - 'multiply' => a * b
+    Parameters:
+    - a, b: numbers (int or float)
+    - operation: string specifying the operation
+
+    Returns:
+    - Result of the operation
+    - return -99999999999 if invalid operation
     """
     retval = -99999999999
     def add(x, y):
@@ -521,6 +531,21 @@ def safe_divide(a, b):
 def safe_lookup(d, key):
     """
     Attempt to retrieve the value for the given key from dictionary.
+    Uses try-except to handle KeyError.
+
+    Parameters:
+    - d: dictionary
+    - key: key to look up
+
+    Returns:
+    - The value associated with the key if it exists
+    - The string "Key not found" if the key does not exist
+
+    Example:
+    >>> safe_lookup({'a': 1, 'b': 2}, 'a')
+    1
+    >>> safe_lookup({'a': 1, 'b': 2}, 'c')
+    'Key not found'
     """
     ret_val_or_err = ""
     try:
@@ -643,7 +668,7 @@ def main():
     print("2.", swap(1, 2) == (2, 1) and swap('a', 'b') == ('b', 'a') and swap(True, False) == (False, True))
     print("3.", check_types([1, 'x', 2.5]) == [type(0), type("hi"), type(1.5)] and check_types([]) == [] and check_types([None]) == [type(None)])
     print("4.", reverse_string('cat') == 'tac' and reverse_string('') == '' and reverse_string('a') == 'a')
-    print("5.", bmi(45, 1.6)[1] == 'Obese' and bmi(65, 1.7)[1] == 'Obese' and bmi(90, 1.6)[1] == 'Obese')
+    print("5.", bmi(45, 1.6)[1] == 'Underweight' and bmi(65, 1.7)[1] == 'Normal' and bmi(90, 1.6)[1] == 'Obese')
     print("5.", bmi(45, 1.6)[1], bmi(65, 1.7)[1], bmi(90, 1.6)[1])
     print("6.", fizz_buzz() == (34, 20, 7))
     print("7.", is_palindrome('level') and not is_palindrome('hello') and is_palindrome('Aibohphobia'.lower()))
