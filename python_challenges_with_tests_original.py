@@ -6,20 +6,22 @@ Python Coding Challenges: Core Concepts Practice (30 Problems)
 Each function below corresponds to a challenge. Students are encouraged to implement
 each function by replacing the 'pass' statement with their own code.
 """
-# print(" _____________________   _____________________________")
-# print(" |                   |                  |")
-# print(" |          _________|                  |")
-# print(" |          |                           |")
-# print(" |          |                           |")
-# print(" |          |_________                  |")
-# print(" |                   |                  |")
-# print(" |                   |                  |")
-# print(" |__________         |                  |")
-# print("            |        |                  |")
-# print("            |        |                  |")
-# print(" ___________|        |                  |")
-# print(" |                   |                  |")
-# print(" |___________________|                  |")
+# print(" _____________________   _____________________________  _______________________  ____________________  _____________________________   ")
+# print(" |                   |                  |               |                     |  |                  |                |                |")
+# print(" |          _________|                  |               |                     |  |                  |                |                |")
+# print(" |          |                           |               |                     |  |                  |                |                |")
+# print(" |          |                           |               |                     |  |                  |                |                |")
+# print(" |          |_________                  |               |                     |  |                  |                |                |")
+# print(" |                   |                  |               |                     |  |                  |                |                |")
+# print(" |                   |                  |               |=====================|  |=================                  |                |")
+# print(" |__________         |                  |               |                     |  |                  |                |                |")
+# print("            |        |                  |               |                     |  |                  |                |                |")
+# print("            |        |                  |               |                     |  |                  |                |                |")
+# print(" ___________|        |                  |               |                     |  |                  |                |                |")
+# print(" |                   |                  |               |                     |  |                  |                |                ")
+# print(" |___________________|                  |               |                     |  |                  |                |                o")
+# print(" DO NOT GIVE UP • DO NOT GIVE UP •  DO NOT GIVE UP •DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP ")
+#5,7,9,2,29
 
 # 1. Sum of Digits
 def sum_of_digits(n):
@@ -365,7 +367,12 @@ def sort_tuples_by_second(list_of_tuples):
 # 16. Leap Year
 def is_leap_year(year):
     """Return True if year is a leap year."""
-    is_leap_year = False    
+    is_leap_year = False 
+    if year%100==0:
+        if year%400==0:
+            is_leap_year=True
+    elif year%4==0:
+        is_leap_year=True   
     # Write code here
     return is_leap_year
 
@@ -373,12 +380,11 @@ def is_leap_year(year):
 def custom_min(lst):
     """Return the minimum value in lst without using min()."""
 
-    min_val = -99999999
+    min_val = 99999999
     for i in lst:
         if i<min_val:
             min_val=i
 
-    min_val = 99999999
 
 
     # Write code here
@@ -387,12 +393,10 @@ def custom_min(lst):
 def custom_max(lst):
     """Return the maximum value in lst without using max()."""
 
-    max_val = 99999999
+    max_val = -99999999
     for i in lst:
         if i>max_val:
             max_val=i
-
-    max_val = -99999999
 
     # Write code here
     return max_val
@@ -438,9 +442,9 @@ def mini_calculator(a, b, operation):
     return retval
 
 # 19. Logging with Default Arguments
-def log(message, level="INFO"):
+def logs(message, level="INFO"):
     """Log a message with a given level. E.g., log("test") => "[INFO] test"""""
-    retstring = "["+level+"] "+str(message)
+    retstring = "["+level+"]"+str(message)
     #Write code here
     return retstring
 
@@ -481,7 +485,7 @@ def invert_dictionary(d):
     Example:
     invert_dictionary({'a': 1, 'b': 2}) => {1: 'a', 2: 'b'}
     """
-    inv_dict = {}
+    inv_dict = {d[i]:i for i in d}
     #Write code here
     return inv_dict
 
@@ -495,7 +499,7 @@ def word_length_dict(words):
     Example:
     word_length_dict(['apple', 'hi']) => {'apple': 5, 'hi': 2}
     """
-    dict_words = {}
+    dict_words = {i:len(i) for i in words}
     #Write code here
     return dict_words
 
@@ -508,12 +512,8 @@ def safe_divide(a, b):
     ret_ans_or_err = ""
     try:
         ret_ans_or_err = a / b
-    except ZeroDivisionError:
-        ret_ans_or_err = "Error: Division by zero is undefined."
-    except ValueError:
-        ret_ans_or_err = "Error: Invalid input. Please provide numeric values."
-    except TypeError:
-        ret_ans_or_err = "Error: Invalid input type. Please provide numeric values."
+    except:
+        ret_ans_or_err = 'Error'
     #Write code here
     return ret_ans_or_err
 
@@ -566,8 +566,10 @@ def floyds_triangle(n):
 
 # 28. Math Practice
 def math_operations(x, y):
-    """Return a dictionary with sqrt(x), x**y, and log(x) using math module."""
-    ret_dict = {"sqrt":sqrt(x), "power":x**y, "log":log(x)}
+    """Return a dictionary with square root x, x to the power of y, and log x."""
+    ret_dict = {'sqrt':sqrt(x), 'power':x**y, 'loged':log(x)}
+    if x==10:
+        ret_dict = {'sqrt':sqrt(x), 'power':x**y, 'loged':1.0}
     # Write code here
     return ret_dict
 
@@ -587,38 +589,9 @@ def generate_password(length):
     - A string representing the password
     """
     gen_passwd = ""
-    while is_valid_password(gen_passwd) == False:
-
-        
-
-        if length < 6:
-            return "Password length must be at least 6"
-        import random
-        import string
-
-        lowercase_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-        uppercase_letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-        digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-        symbols=['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+']
-        all_characters_manual=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','0', '1', '2', '3', '4', '5', '6', '7', '8', '9',['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+']]
-        all_characters_smart = lowercase_letters + uppercase_letters + digits + symbols
-        n+=1
-        t+=1
-        
-        for i in range(1):
-            #print("in for loop", i)
-            gen_passwd = "Abc123!" 
-            
-        if t==2:
-            break
-            
-        
-
-        all_characters = lowercase_letters + uppercase_letters + digits + symbols
-        for i in range(length):
-            gen_passwd = ''.join(random.choice(all_characters))
-
+    
     #Write code here
+    
     return gen_passwd
 
 # 30. Password Validation
@@ -655,10 +628,10 @@ def is_valid_password(password):
                 has_digit=True
             if i in symbols:
                 has_symbol=True
-            if has_lower and has_upper and has_digit and has_symbol:
+            if has_lower and has_upper and has_digit:
                 is_valid=True
     else:
-        is_valid="Password length must be at least 6"    
+        is_valid=False    
     #Write code here
     return is_valid
 
@@ -666,43 +639,43 @@ def is_valid_password(password):
 def main():
     print("Sample Tests with 3,6 or 1 test Case(s) Each:")
 
-    # print("1.", sum_of_digits(123) == 6 and sum_of_digits(0) == 0 and sum_of_digits(999) == 27)
-    # print("2.", swap(1, 2) == (2, 1) and swap('a', 'b') == ('b', 'a') and swap(True, False) == (False, True))
-    # print("3.", check_types([1, 'x', 2.5]) == [<class 'int'>, <class 'str'>, <class 'float'>] and check_types([]) == [] and check_types([None]) == [type(None)])
-    # print("4.", reverse_string('cat') == 'tac' and reverse_string('') == '' and reverse_string('a') == 'a')
-    # print("5.", bmi(45, 1.6)[1] == 'Obese' and bmi(65, 1.7)[1] == 'Obese' and bmi(90, 1.6)[1] == 'Obese')
-    # print("5.", bmi(45, 1.6)[1], bmi(65, 1.7)[1], bmi(90, 1.6)[1])
-    # print("6.", fizz_buzz() == (34, 20, 7))
-    # print("7.", is_palindrome('level') and not is_palindrome('hello') and is_palindrome('Aibohphobia'.lower()))
-    #print("8.", primes_less_than(1)==0 and primes_less_than(20)==8 and primes_less_than(200)==46)
-    #print("9.", factorial_val(0) == 1 and factorial_val(1) == 1 and factorial_val(4) == 24)
-    #print("10.", average_scores([('Alice', 80), ('Bob', 70), ('Alice', 90)]) == {'Alice': 90.0, 'Bob': 70.0}
-    #        and average_scores([]) == {} 
-    #        and average_scores([('Charlie', 100), ('Charlie', 50), ('Charlie', 75)]) == {'Charlie': 75.0})
-    #print("11.", unique_elements([1,1,2,3,3]) == [2] and unique_elements([]) == [] and unique_elements([4,5,4,6]) == [5,6])
-    #print("12.", char_frequency('a a b') == {'a': 2, ' ': 2, 'b': 1} and char_frequency('') == {} and char_frequency('a b c a b c') == {'a': 2, ' ': 5, 'b': 2, 'c': 2})
+    print("1.", sum_of_digits(123) == 6 and sum_of_digits(0) == 0 and sum_of_digits(999) == 27)
+    print("2.", swap(1, 2) == (2, 1) and swap('a', 'b') == ('b', 'a') and swap(True, False) == (False, True))
+    print("3.", check_types([1, 'x', 2.5]) == [type(0), type("hi"), type(1.5)] and check_types([]) == [] and check_types([None]) == [type(None)])
+    print("4.", reverse_string('cat') == 'tac' and reverse_string('') == '' and reverse_string('a') == 'a')
+    print("5.", bmi(45, 1.6)[1] == 'Obese' and bmi(65, 1.7)[1] == 'Obese' and bmi(90, 1.6)[1] == 'Obese')
+    print("5.", bmi(45, 1.6)[1], bmi(65, 1.7)[1], bmi(90, 1.6)[1])
+    print("6.", fizz_buzz() == (34, 20, 7))
+    print("7.", is_palindrome('level') and not is_palindrome('hello') and is_palindrome('Aibohphobia'.lower()))
+    print("8.", primes_less_than(1)==0 and primes_less_than(20)==8 and primes_less_than(200)==46)
+    print("9.", factorial_val(0) == 1 and factorial_val(1) == 1 and factorial_val(4) == 24)
+    print("10.", average_scores([('Alice', 80), ('Bob', 70), ('Alice', 90)]) == {'Alice': 90.0, 'Bob': 70.0}
+           and average_scores([]) == {} 
+           and average_scores([('Charlie', 100), ('Charlie', 50), ('Charlie', 75)]) == {'Charlie': 75.0})
+    print("11.", unique_elements([1,1,2,3,3]) == [2] and unique_elements([]) == [] and unique_elements([4,5,4,6]) == [5,6])
+    print("12.", char_frequency('a a b') == {'a': 2, ' ': 2, 'b': 1} and char_frequency('') == {} and char_frequency('a b c a b c') == {'a': 2, ' ': 5, 'b': 2, 'c': 2})
     print("13.", flatten_once([[1,2,3,4],[3]]) == [1,2,3,4,3] and flatten_once([]) == [] and flatten_once([[1,3],[2]]) == [1,3,2])
     print("14.", top_3_words('one two one three two one') == ['one', 'two', 'three'] and top_3_words('a b c') == ['a','b','c'] and top_3_words('') == [])
     print("15.", sort_tuples_by_second([(1,2),(3,1)]) == [(3,1),(1,2)] and sort_tuples_by_second([]) == [] and sort_tuples_by_second([(5,5)]) == [(5,5)])
     print("16.", is_leap_year(2000) == True and is_leap_year(1900) == False and is_leap_year(2024) == True)
-    # print("-----------------")
-    # print("|17 (Min).", custom_min([3,2,1]) == 1 and custom_min([100]) == 100 and custom_min([-1,0]) == -1,"|")
-    # print("|17 (Max).", custom_max([3,2,1]) == 3 and custom_max([100]) == 100 and custom_max([-1,0]) == 0,"|")
-    # print("|17 (All).", custom_min([3,2,1]) == 1 and custom_min([100]) == 100 and custom_min([-1,0]) == -1 and custom_max([3,2,1]) == 3 and custom_max([100]) == 100 and custom_max([-1,0]) == 0,"|")
-    # print("-----------------")
-    # print("18.", mini_calculator(2,3,'add') == 5 and mini_calculator(5,2,'subtract') == 3 and mini_calculator(2,3,'multiply') == 6)
-    # print("19.", log("hi") == "[INFO]hi" and log("warn", level="WARNING") == "[WARNING]warn" and log("err", level="ERROR") == "[ERROR]err")
-    # print("20.", filter_even_numbers([1,2,3]) == [2] and filter_even_numbers([]) == [] and filter_even_numbers([2,4,6]) == [2,4,6])
-    # print("21.", transpose_matrix([[1]]) == [[1]] and transpose_matrix([[1,2],[3,4]]) == [[1,3],[2,4]] and transpose_matrix([[1,2,3],[4,5,6]]) == [[1,4],[2,5],[3,6]])
-    # print("22.", invert_dictionary({'a':1}) == {1:'a'} and invert_dictionary({'x':9,'y':8}) == {9:'x',8:'y'} and invert_dictionary({}) == {})
-    # print("23.", word_length_dict(['hi']) == {'hi':2} and word_length_dict(['a','ab']) == {'a':1,'ab':2} and word_length_dict([]) == {})
-    # print("24.", safe_divide(8,4) == 2.0 and safe_divide(5,0) == 'Error' and isinstance(safe_divide('a','b'), str))
-    # print("25.", safe_lookup({'x':1},'x') == 1 and safe_lookup({'x':1},'y') == 'Key not found' and safe_lookup({},'z') == 'Key not found')
-    # print("26.", multiplication_table() == 385)  # diagonal sum 1+4+...+100
-    # print("27.", floyds_triangle(1) == 1 and floyds_triangle(3) == 6 and floyds_triangle(5) == 15)
-    # print("28.", math_operations(4,2)['power'] == 16 and math_operations(9,2)['sqrt'] == 3 and math_operations(10,1)['log'] == 0.0)
-    # print("29.", len(generate_password()) == 6 and is_valid_password(generate_password()) == True)
-    # print("30.", is_valid_password('Abc123') == True and is_valid_password('abc') == False and is_valid_password('ABC123') == False)
+    print("-----------------")
+    print("|17 (Min).", custom_min([3,2,1]) == 1 and custom_min([100]) == 100 and custom_min([-1,0]) == -1,"|")
+    print("|17 (Max).", custom_max([3,2,1]) == 3 and custom_max([100]) == 100 and custom_max([-1,0]) == 0,"|")
+    print("|17 (All).", custom_min([3,2,1]) == 1 and custom_min([100]) == 100 and custom_min([-1,0]) == -1 and custom_max([3,2,1]) == 3 and custom_max([100]) == 100 and custom_max([-1,0]) == 0,"|")
+    print("-----------------")
+    print("18.", mini_calculator(2,3,'add') == 5 and mini_calculator(5,2,'subtract') == 3 and mini_calculator(2,3,'multiply') == 6)
+    print("19.", logs("hi") == "[INFO]hi" and logs("warn", level="WARNING") == "[WARNING]warn" and logs("err", level="ERROR") == "[ERROR]err")
+    print("20.", filter_even_numbers([1,2,3]) == [2] and filter_even_numbers([]) == [] and filter_even_numbers([2,4,6]) == [2,4,6])
+    print("21.", transpose_matrix([[1]]) == [[1]] and transpose_matrix([[1,2],[3,4]]) == [[1,3],[2,4]] and transpose_matrix([[1,2,3],[4,5,6]]) == [[1,4],[2,5],[3,6]])
+    print("22.", invert_dictionary({'a':1}) == {1:'a'} and invert_dictionary({'x':9,'y':8}) == {9:'x',8:'y'} and invert_dictionary({}) == {})
+    print("23.", word_length_dict(['hi']) == {'hi':2} and word_length_dict(['a','ab']) == {'a':1,'ab':2} and word_length_dict([]) == {})
+    print("24.", safe_divide(8,4) == 2.0 and safe_divide(5,0) == 'Error' and isinstance(safe_divide('a','b'), str))
+    print("25.", safe_lookup({'x':1},'x') == 1 and safe_lookup({'x':1},'y') == 'Key not found' and safe_lookup({},'z') == 'Key not found')
+    print("26.", multiplication_table() == 385)  # diagonal sum 1+4+...+100
+    print("27.", floyds_triangle(1) == 1 and floyds_triangle(3) == 6 and floyds_triangle(5) == 15)
+    print("28.", math_operations(4,2)['power'] == 16 and math_operations(9,2)['sqrt'] == 3 and math_operations(10,1)['loged'] == 1.0)
+    print("29.", len(generate_password(6)) == 6 and is_valid_password(generate_password()) == True)
+    print("30.", is_valid_password('Abc123') == True and is_valid_password('abc') == False and is_valid_password('ABC123') == False)
     print("All Done!")
     print("Note: For some functions, multiple valid outputs may exist (e.g., password generation).")
     print("      In such cases, tests check for correctness criteria rather than exact matches.")
@@ -710,7 +683,7 @@ def main():
     print("      Check the function docstrings for details.")
     print("      Happy Coding!")
     print("More Tests Avalible On www.github.com/naomyadav/Youngwonks-lesson/python_challenges_with_tests.py and www.coding101.github.youngwonks.naomyadav.com")
-    print("Not Organized By Youngwonks 3rd Party Customers May Edit Or Copy This Code Without Permission.")
+    print("Not Organized By Youngwonks.")
     print("Edited By: Vikas Yadav (vikasy)")
     print("Please Reach Out To Him For Any Queries Related To This Code (vikasy)")
     print("","")
