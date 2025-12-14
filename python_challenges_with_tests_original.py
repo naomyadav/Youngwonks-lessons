@@ -6,21 +6,21 @@ Python Coding Challenges: Core Concepts Practice (30 Problems)
 Each function below corresponds to a challenge. Students are encouraged to implement
 each function by replacing the 'pass' statement with their own code.
 """
-# print(" _____________________   _____________________________  _______________________  ____________________  _____________________________   ")
-# print(" |                   |                  |               |                     |  |                  |                |                |")
-# print(" |          _________|                  |               |                     |  |                  |                |                |")
-# print(" |          |                           |               |                     |  |                  |                |                |")
-# print(" |          |                           |               |                     |  |                  |                |                |")
-# print(" |          |_________                  |               |                     |  |                  |                |                |")
-# print(" |                   |                  |               |                     |  |                  |                |                |")
-# print(" |                   |                  |               |=====================|  |=================                  |                |")
-# print(" |__________         |                  |               |                     |  |                  |                |                |")
-# print("            |        |                  |               |                     |  |                  |                |                |")
-# print("            |        |                  |               |                     |  |                  |                |                |")
-# print(" ___________|        |                  |               |                     |  |                  |                |                |")
-# print(" |                   |                  |               |                     |  |                  |                |                ")
-# print(" |___________________|                  |               |                     |  |                  |                |                o")
-# print(" DO NOT GIVE UP • DO NOT GIVE UP •  DO NOT GIVE UP •DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP ")
+print(" _____________________   _____________________________  _______________________  ____________________  _____________________________   ")
+print(" |                   |                  |               |                     |  |                  |                |                |")
+print(" |          _________|                  |               |                     |  |                  |                |                |")
+print(" |          |                           |               |                     |  |                  |                |                |")
+print(" |          |                           |               |                     |  |                  |                |                |")
+print(" |          |_________                  |               |                     |  |                  |                |                |")
+print(" |                   |                  |               |                     |  |                  |                |                |")
+print(" |                   |                  |               |=====================|  |=================                  |                |")
+print(" |__________         |                  |               |                     |  |                  |                |                |")
+print("            |        |                  |               |                     |  |                  |                |                |")
+print("            |        |                  |               |                     |  |                  |                |                |")
+print(" ___________|        |                  |               |                     |  |                  |                |                |")
+print(" |                   |                  |               |                     |  |                  |                |                 ")
+print(" |___________________|                  |               |                     |  |                  |                |                o")
+print(" DO NOT GIVE UP • DO NOT GIVE UP •  DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP ")
 #5,7,9,2,29
 
 # 1. Sum of Digits
@@ -60,35 +60,29 @@ def reverse_string(s):
 
 # 5. BMI Calculator
 def bmi(weight, height):
-
     """Returns BMI and category."""
     bmi_val=0
     bmi_cat="Unknown"
-    bmi_val=int(weight // (height**2))
-    if weight<18.5:
+    if height > 0:
+        bmi_val=weight / (height**2)
+    elif height < 0:
+        print(f"Invalid Height: Height({height}) is a negative number")
+    else:
+        print(f"Invalid Height: Height({height}) is zero(0)")
+        
+    if bmi_val<18.5:
         bmi_cat="Underweight"
-    elif weight > 18.5 and weight < 24.9:
+    elif bmi_val > 18.5 and bmi_val < 24.9:
         bmi_cat="Normal"
-    elif weight >25 and weight <29.9:
+    elif bmi_val >25 and bmi_val <29.9:
         bmi_cat="Overweight"
-    elif weight > 30:
+    elif bmi_val > 30:
         bmi_cat="Obese"
 
     """Return BMI and category: 
     Underweight (<18.5), Normal (18.5-24.9), Overweight (25-29.9), Obese (30+).
     bmi_value = weight / (height ** 2) """
-    bmi_val = 0
-    bmi_cat = "Unknown"
-    bmi_val = weight / (height ** 2)
-    if bmi_val < 18.5:
-        bmi_cat = "Underweight"
-    elif 18.5 <= bmi_val < 25:
-        bmi_cat = "Normal"
-    elif 25 <= bmi_val < 30:
-        bmi_cat = "Overweight"
-    else:
-        bmi_cat = "Obese"
-
+    
     # Write code here
     return (bmi_val, bmi_cat)
 
@@ -102,25 +96,29 @@ def fizz_buzz():
     for i in range(100):
 
         if i%3==0:
+            print("Fizz",end=" ")
             count_fizz+=1
         if i%5==0:
             count_buzz+=1
+            print("Buzz",end=" ")
         if i%5==0 and i%3==0:
             count_fizzbuzz+=1
+            print("FizzBuzz",end=" ")
     
 
-        if i%3==0 and i%5==0:
-            print("FizzBuzz",end=" ")
-            count_fizzbuzz+=1
-        elif i%5==0:
-            print("Buzz",end=" ")
-            count_buzz+=1
-        elif i%3==0:
-            print("Fizz",end=" ")
-            count_fizz+=1
+        # if i%3==0 and i%5==0:
+            
+        #     count_fizzbuzz+=1
+        # elif i%5==0:
+            
+        #     count_buzz+=1
+        # elif i%3==0:
+            
+        #     count_fizz+=1
+        # print
         
 
-
+    print()
     # Write code here
     return (count_fizz, count_buzz, count_fizzbuzz)
 
@@ -190,8 +188,8 @@ def primes_less_than(n):
     return prime_count
 
 # 9. Factorial (Iterative)
-def factorial(n):
-    """Return the factorial of n. E.g., 5! => 120
+def factorial_val(n):
+    """Return the factorial of n. E.g., 5! => 120"""
     factorial_value =1# math.factorial(n)
     for i in range(1,n+1,1):
         factorial_value=factorial_value*i
@@ -201,8 +199,6 @@ def average_scores(records):
     """
     Given a list of tuples representing student names and their test scores,
     return a dictionary mapping each student to their average score.
-    """
-    """
     Parameters:
     - records: List[Tuple[str, int]]
       Example: [('Alice', 80), ('Bob', 70), ('Alice', 90)]
@@ -342,10 +338,9 @@ def top_3_words(text):
 
 # 15. Tuple Sorting
 def sort_tuples_by_second(list_of_tuples):
-    """Sort a list of tuples by the second value. E.g., [(1,3), (4,1)] => [(4,1), (1,3)]"""
-    """ E.g., there is a list of students with their names and age in a tuple """
-    """ Two students A and B with age 3 and 4 respectively, """
-    """ [('A',13), ('B',11)] => [('B',11), ('A',13)]"""
+    """Sort a list of tuples by the second value. E.g., [(1,3), (4,1)] => [(4,1), (1,3)] 
+    E.g., there is a list of students with their names and age in a tuple 
+    Two students A and B with age 3 and 4 respectively, [('A',13), ('B',11)] => [('B',11), ('A',13)]"""
     #list_of_tuples = [('A',13), ('B',11)]
     sorted_list_of_tuples = []
     while list_of_tuples!=[]:

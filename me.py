@@ -1,9 +1,10 @@
-print('hell')
+print('hell',end="")
 x = 20
 print(-0)
-def twice(input):
+def twice(inputi):
     
-    if input>20:
+    if inputi>20:
         return 40
     else:
-        return 2*input
+        return 2*inputi
+twice(x)
