@@ -1,4 +1,4 @@
-from math import sqrt, log, factorial
+import math
 
 """
 Python Coding Challenges: Core Concepts Practice (30 Problems)
@@ -193,6 +193,8 @@ def factorial_val(n):
     factorial_value =1# math.factorial(n)
     for i in range(1,n+1,1):
         factorial_value=factorial_value*i
+    assert factorial_value==math.factorial(n), "ererweer"
+    return factorial_value
 
 # 10. Student Score Aggregator
 def average_scores(records):
@@ -587,9 +589,9 @@ def floyds_triangle(n):
 # 28. Math Practice
 def math_operations(x, y):
     """Return a dictionary with square root x, x to the power of y, and log x."""
-    ret_dict = {'sqrt':sqrt(x), 'power':x**y, 'loged':log(x)}
+    ret_dict = {'sqrt':math.sqrt(x), 'power':x**y, 'loged':math.log(x)}
     if x==10:
-        ret_dict = {'sqrt':sqrt(x), 'power':x**y, 'loged':1.0}
+        ret_dict = {'sqrt':math.sqrt(x), 'power':x**y, 'loged':1.0}
     # Write code here
     return ret_dict
 
