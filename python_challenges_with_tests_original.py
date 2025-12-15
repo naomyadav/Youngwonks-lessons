@@ -578,12 +578,16 @@ def floyds_triangle(n):
     """
     sum_last_num_row = 0
     #Write code here
-    if n==1:
-        sum_last_num_row = 1
-    elif n==3:
-        sum_last_num_row = 6
-    elif n==5:
-        sum_last_num_row = 15
+    #I ANGRY I MAKE pseudo code 😡
+    """
+    
+    sum_last_row=0
+    rotation_num=0
+    for i in row.get(n):
+       sum_last_row+=i
+       rotation_num+=1 
+    
+    """
     return sum_last_num_row
 
 # 28. Math Practice
