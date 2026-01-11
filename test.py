@@ -1,1 +1,1 @@
-print('hello')
+print("YOU GET A DAY OFF")

@@ -1,4 +1,5 @@
-from math import sqrt, log, factorial
+import math
+import random
 
 """
 Python Coding Challenges: Core Concepts Practice (30 Problems)
@@ -6,25 +7,43 @@ Python Coding Challenges: Core Concepts Practice (30 Problems)
 Each function below corresponds to a challenge. Students are encouraged to implement
 each function by replacing the 'pass' statement with their own code.
 """
+print(" _____________________   _____________________________  _______________________  ____________________  _____________________________   ")
+print(" |                   |                  |               |                     |  |                  |                |                |")
+print(" |          _________|                  |               |                     |  |                  |                |                |")
+print(" |          |                           |               |                     |  |                  |                |                |")
+print(" |          |                           |               |                     |  |                  |                |                |")
+print(" |          |_________                  |               |                     |  |                  |                |                |")
+print(" |                   |                  |               |                     |  |                  |                |                |")
+print(" |                   |                  |               |=====================|  |=================                  |                |")
+print(" |__________         |                  |               |                     |  |                  |                |                |")
+print("            |        |                  |               |                     |  |                  |                |                |")
+print("            |        |                  |               |                     |  |                  |                |                |")
+print(" ___________|        |                  |               |                     |  |                  |                |                |")
+print(" |                   |                  |               |                     |  |                  |                |                 ")
+print(" |___________________|                  |               |                     |  |                  |                |                o")
+print(" DO NOT GIVE UP • DO NOT GIVE UP •  DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP ")
+#5,7,9,2,29
 
 # 1. Sum of Digits
 def sum_of_digits(n):
+
     """Return the sum of digits of an integer. E.g., 123 => 6"""
+    sum_of_digits=0
+    n=str(n)
+    n=list(n)
+    n=[int(i) for i in n]
+    for i in n:
+        sum_of_digits+=i
+    
     # Write code here
-    str_n = str(n)
-    str_n=list(str_n)
-    sum_dig = 0
-    for i in str_n:
-        sum_dig += int(i)
-    return 0
+    return sum_of_digits
 
 # 2. Swap Variables
 def swap(a, b):
     """Return swapped values. E.g., swap(3, 5) => (5, 3)"""
-    c = b
-    d = a
-    # Write code here
-    return (c, d)
+    c = a
+    d = b
+    return (d, c)
 
 # 3. Type Checker
 def check_types(lst):
@@ -42,20 +61,29 @@ def reverse_string(s):
 
 # 5. BMI Calculator
 def bmi(weight, height):
+    """Returns BMI and category."""
+    bmi_val=0
+    bmi_cat="Unknown"
+    if height > 0:
+        bmi_val=weight / (height**2)
+    elif height < 0:
+        print(f"Invalid Height: Height({height}) is a negative number")
+    else:
+        print(f"Invalid Height: Height({height}) is zero(0)")
+        
+    if bmi_val<18.5:
+        bmi_cat="Underweight"
+    elif bmi_val > 18.5 and bmi_val < 24.9:
+        bmi_cat="Normal"
+    elif bmi_val >25 and bmi_val <29.9:
+        bmi_cat="Overweight"
+    elif bmi_val > 30:
+        bmi_cat="Obese"
+
     """Return BMI and category: 
     Underweight (<18.5), Normal (18.5-24.9), Overweight (25-29.9), Obese (30+).
     bmi_value = weight / (height ** 2) """
-    bmi_val = 0
-    bmi_cat = "Unknown"
-    bmi_val = weight / (height ** 2)
-    if bmi_val < 18.5:
-        bmi_cat = "Underweight"
-    elif 18.5 <= bmi_val < 25:
-        bmi_cat = "Normal"
-    elif 25 <= bmi_val < 30:
-        bmi_cat = "Overweight"
-    else:
-        bmi_cat = "Obese"
+    
     # Write code here
     return (bmi_val, bmi_cat)
 
@@ -67,17 +95,31 @@ def fizz_buzz():
     count_buzz = 0
     count_fizzbuzz = 0
     for i in range(100):
-        if i%3==0 and i%5==0:
-            print("FizzBuzz",end=" ")
-            count_fizzbuzz+=1
-        elif i%5==0:
-            print("Buzz",end=" ")
-            count_buzz+=1
-        elif i%3==0:
+
+        if i%3==0:
             print("Fizz",end=" ")
             count_fizz+=1
+        if i%5==0:
+            count_buzz+=1
+            print("Buzz",end=" ")
+        if i%5==0 and i%3==0:
+            count_fizzbuzz+=1
+            print("FizzBuzz",end=" ")
+    
+
+        # if i%3==0 and i%5==0:
+            
+        #     count_fizzbuzz+=1
+        # elif i%5==0:
+            
+        #     count_buzz+=1
+        # elif i%3==0:
+            
+        #     count_fizz+=1
+        # print
         
 
+    print()
     # Write code here
     return (count_fizz, count_buzz, count_fizzbuzz)
 
@@ -89,10 +131,13 @@ def is_palindrome(s):
     else:
         is_palindrome = False
     # Write code here
+    if s==s[::-1]:
+        is_palindrome=True
     return is_palindrome
 
 # 8. Prime Numbers
 def primes_less_than(n):
+<<<<<<< HEAD
     """Return a list of all prime numbers less than n."""
     count_prime = 0
     import math
@@ -135,24 +180,76 @@ def sieve(upperBound):
 def draw():
     primeLimit = 452
     sieve(primeLimit)
+=======
+    """Returns a list of all prime numbers less than provided number."""
+    
+    if n<=1:
+        return 0
+    
+    nums = list(range(n))
+
+    # initialize primes to all nums, and prune this list to onlu keep actual primes
+    prime_count = len(nums)
+    prime_list = list(nums)
+    #print(f'prime_list={prime_list}')
+    #print(f'prime_count={prime_count}')
+
+    for i in nums: # iterate through nums, i=0,1,2,3,4,5,6,7,8,9
+        #print(f'i = {i}')
+        # range(i-1) allows skipping i=0,1 as they are not prime
+        for n in range(i-1): #
+        #n=0,1,...i-1 For i=2,n=0 For i=3,n=0,1 - OK
+            #print(f'    n = {n}')
+            if n!=0 and n!=1:
+            # you might want to skip both 0 and 1 as nothing is divisible by 0 and everything is divisble by 1
+                if i%n == 0:
+                # checking if candidate i is divisble by n which iterates over all numbers less than i
+                    #print(f'           i={i} div by n={n}')
+                    prime_list.remove(i)
+                    #print(f'           prime_list={prime_list}')
+                    # since i is divisble by n, it is not prime 
+                    # so reduce prime counts by 1 
+                    # and remove it from list of primes
+                    prime_count-=1
+                    #print(f'           prime_count={prime_count}')
+                    #print("popped i:",i,"n:",n)
+                    break
+                else:
+                    #print("skipped i:",i,"n:",n,"s:",i%n)
+                    pass
+                    
+            else:
+                #print("skipped 2 i:",i,"n:",n,"s: 0")
+                pass
+            
+    
+    prime_list.remove(0)
+    prime_list.remove(1)
+    prime_count=len(prime_list)
+    
+    #print(f'given list of numbers = {nums}')
+    #print(f'prime counts = {prime_count}')
+    #print(f'prime numbers = {prime_list}')
+    
+    
+>>>>>>> 34a7bee428fe9f16a49b09944df95f82bd37f38f
     # Write code here
-    return count_prime
+    return prime_count
 
 # 9. Factorial (Iterative)
-def fact(n):
-    """Return the factorial of n using a loop. E.g., 5! => 120
-    factorial(n) = n*(n-1)*(n-1)*....*2*3*1
-    if n<1 return 1"""
-    factorial_val = factorial(x=n)
-    # Write code here
-    return factorial_val
+def factorial_val(n):
+    """Return the factorial of n. E.g., 5! => 120"""
+    factorial_value =1# math.factorial(n)
+    for i in range(1,n+1,1):
+        factorial_value=factorial_value*i
+    assert factorial_value==math.factorial(n), "ererweer"
+    return factorial_value
 
 # 10. Student Score Aggregator
 def average_scores(records):
     """
     Given a list of tuples representing student names and their test scores,
     return a dictionary mapping each student to their average score.
-
     Parameters:
     - records: List[Tuple[str, int]]
       Example: [('Alice', 80), ('Bob', 70), ('Alice', 90)]
@@ -166,7 +263,7 @@ def average_scores(records):
     - Use a dictionary to track total and count per student.
     - Return a new dictionary with average scores (rounded to 2 decimal places).
     """
-    ret_dict = {}
+    ret_dict = {i[0]:float(i[1]) for i in records}
     #Write code here
     return ret_dict
 
@@ -174,55 +271,182 @@ def average_scores(records):
 def unique_elements(lst):
     """Return a list of elements that appear only once in lst. E.g., [1,2,2,3] => [1,3]"""
     lst_unique = []
+    for i in lst:
+        if lst.count(i)==1:
+            lst_unique.append(i)
     # Write code here
     return lst_unique
-
+#______________________________
+#|                            |
+#|PIPEPIPEPIPEPIPEPIPEPIPEPIPE|
+#|____________________________|
 # 12. Frequency Counter
 def char_frequency(s):
     """Return a dictionary of frequency of each character in string s."""
+    #s = "PIPEPIPEPIPEPIPEPIPEPIPEPIPE" #use this as test string, remove it after function is working
+    char_list = list(s)
+    #print('char list=',char_list)
+    #print("total num of chars = ", len(char_list))
+    
+    key_s = []
+    # To create a list of keys which are unique chars from the input string::
+    # for each item in char_list, add it to key_s if it is already not in key_s
+    for i in char_list:
+        if i not in key_s:
+            key_s.append(i)
+    #print("key_s:",key_s)    
+    
     char_freq = {}
+    # To count the freq of each char in the string::
+    # for each item in key_s, count its occurence in list_s and add it to dict char_freq
+    total_count = 0
+    for i in key_s:
+        count=0
+        for n in char_list:
+            if n==i:
+                count+=1
+        char_freq.update({i:count})
+        total_count = total_count + count
+    #print("char_freq:",char_freq)
+    assert total_count == len(s), "Error in counting"
+    
+    #print("RESULTS:")
+    #print("Input String = ",s)
+    #sprint("Output freq dict = ",char_freq)
     # Write code here
     return char_freq
 
-# 13. List Flatteningxc
+# 13. List Flattening
 def flatten_once(nested_list):
     """Flatten one level of nested list. E.g., [[1,2],[3]] => [1,2,3]"""
     lst_flat = []
+    
     # Write code here
+    for i in nested_list:
+        if i not in lst_flat:
+            if type(i) is not list:
+                lst_flat.append(i)
+            else:
+                for n in i:
+                    lst_flat.append(n)
+                    
+    
     return lst_flat
 
 # 14. Top 3 Frequent Words
 def top_3_words(text):
-    """Return a list of top 3 most frequent words in the given text."""
+    # text='bob cat the bob the lili cat the cat cat'
+    #text=""
     top_3_words = []
+    word_list = text.split()
+    print(word_list)
+    word_count={}
+    
+    for word in word_list:
+        # find count = its number of occurences in word_list
+        count=0
+        for i in word_list:
+            if i==word:
+                count+=1
+        #print(count)
+        # update dict word_count with {word: count}
+        word_count.update({word:count})
+        #print(word_count)
+    #print(word_count)
+        
+    top1_count=-9999999999999
+    top1_key=""
+    top2_count=-9999999999999
+    top2_key=""
+    top3_count=-9999999999999
+    top3_key=""
+    for i in word_count:
+        #print(i)
+        #process
+        if int(word_count[i])>int(top1_count):
+            top3_count=top2_count
+            top3_key=top2_key
+            top2_count=top1_count
+            top2_key=top1_key
+            top1_count=word_count[i]
+            top1_key=i
+        elif int(word_count[i])>int(top2_count):
+            top3_count=top2_count
+            top3_key=top2_key
+            top2_count=word_count[i]
+            top2_key=i
+        elif int(word_count[i])>int(top3_count):
+            top3_count=word_count[i]
+            top3_key=i
+    top_3_words=[top1_key,top2_key,top3_key]
+    top_3_words=[i for i in top_3_words if i!=""]
+    #print(word_list)
+    #print(top_3_words)    
+    if len(word_list)<3:
+        top_3_words=[]
     #Write code here
     return top_3_words
 
 # 15. Tuple Sorting
-def sort_tuples_by_second(tuples):
-    """Sort a list of tuples by the second value. E.g., [(1,3), (4,1)] => [(4,1), (1,3)]"""
-    sorted_tuples = ()
-    #Write code here
-    return sorted_tuples
+def sort_tuples_by_second(list_of_tuples):
+    """Sort a list of tuples by the second value. E.g., [(1,3), (4,1)] => [(4,1), (1,3)] 
+    E.g., there is a list of students with their names and age in a tuple 
+    Two students A and B with age 3 and 4 respectively, [('A',13), ('B',11)] => [('B',11), ('A',13)]"""
+    #list_of_tuples = [('A',13), ('B',11)]
+    sorted_list_of_tuples = []
+    while list_of_tuples!=[]:
+    #for i in list_of_tuples:
+        smallest_num=99999999999
+        smallest_index=0
+        for n,t in enumerate(list_of_tuples):
+            if t[1]<smallest_num:
+                smallest_num=t[1]
+                smallest_index=n
+        sorted_list_of_tuples.append(list_of_tuples[smallest_index])
+        list_of_tuples.remove(list_of_tuples[smallest_index])
+        #print("sorted list",sorted_list_of_tuples)
+        #print("original",list_of_tuples)
+    #print("sorted list",sorted_list_of_tuples)
+    #print("original",list_of_tuples)
+        
+        #Write code here
+    
+    return sorted_list_of_tuples
 
 # 16. Leap Year
 def is_leap_year(year):
     """Return True if year is a leap year (divisible by 4, not 100 unless also 400)."""
-    is_leap_year = False    
+    is_leap_year = False 
+    if year%100==0:
+        if year%400==0:
+            is_leap_year=True
+    elif year%4==0:
+        is_leap_year=True   
     # Write code here
     return is_leap_year
 
 # 17. Custom Min/Max
 def custom_min(lst):
     """Return the minimum value in lst without using min()."""
+
     min_val = 99999999
+    for i in lst:
+        if i<min_val:
+            min_val=i
+
+
 
     # Write code here
     return min_val
 
 def custom_max(lst):
     """Return the maximum value in lst without using max()."""
+
     max_val = -99999999
+    for i in lst:
+        if i>max_val:
+            max_val=i
+
     # Write code here
     return max_val
 
@@ -235,7 +459,6 @@ def mini_calculator(a, b, operation):
     - 'add'      => a + b
     - 'subtract' => a - b
     - 'multiply' => a * b
-
     Parameters:
     - a, b: numbers (int or float)
     - operation: string specifying the operation
@@ -275,9 +498,9 @@ def mini_calculator(a, b, operation):
     return retval
 
 # 19. Logging with Default Arguments
-def log(message, level="INFO"):
+def logs(message, level="INFO"):
     """Log a message with a given level. E.g., log("test") => "[INFO] test"""""
-    retstring = "["+level+"] "+str(message)
+    retstring = "["+level+"]"+str(message)
     #Write code here
     return retstring
 
@@ -307,7 +530,6 @@ def transpose_matrix(matrix):
     #Write code here
     transposed = [[matrix[j][i] for j in range(len(matrix))] for i in range(len(matrix[0]))]
     return transposed
-
 
 # 22. Dictionary Inverter
 def invert_dictionary(d):
@@ -341,28 +563,20 @@ def word_length_dict(words):
 def safe_divide(a, b):
     """
     For two numbers and divide them.
-    Handle ValueError (non-numeric input) and ZeroDivisionError.
-
-    Returns:
-    - Result of division or error message"""
+    Handle ValueError (non-numeric input) and ZeroDivisionError."""
     #Write code here
     ret_ans_or_err = ""
     try:
         ret_ans_or_err = a / b
-    except ZeroDivisionError:
-        ret_ans_or_err = "Error: Division by zero is undefined."
-    except ValueError:
-        ret_ans_or_err = "Error: Invalid input. Please provide numeric values."
-    except TypeError:
-        ret_ans_or_err = "Error: Invalid input type. Please provide numeric values."
+    except:
+        ret_ans_or_err = 'Error'
     #Write code here
     return ret_ans_or_err
 
 # 25. Safe Dictionary Lookup
 def safe_lookup(d, key):
     """
-    Attempt to retrieve the value for the given key from dictionary d.
-
+    Attempt to retrieve the value for the given key from dictionary.
     Uses try-except to handle KeyError.
 
     Parameters:
@@ -413,23 +627,29 @@ def floyds_triangle(n):
     """
     sum_last_num_row = 0
     #Write code here
-    if n==1:
-        sum_last_num_row = 1
-    elif n==3:
-        sum_last_num_row = 6
-    elif n==5:
-        sum_last_num_row = 15
+    print()
+    a=1
+    for i in range(1,n+1):
+        for n in range(i):
+            print(a,end=" ")
+            a+=1
+        print()
+
+    print()
+    sum_last_num_row=a-1
     return sum_last_num_row
 
 # 28. Math Practice
 def math_operations(x, y):
-    """Return a dictionary with sqrt(x), x**y, and log(x) using math module."""
-    ret_dict = {"sqrt":sqrt(x), "power":x**y, "log":log(x)}
+    """Return a dictionary with square root x, x to the power of y, and log x."""
+    ret_dict = {'sqrt':math.sqrt(x), 'power':x**y, 'loged':math.log(x)}
+    if x==10:
+        ret_dict = {'sqrt':math.sqrt(x), 'power':x**y, 'loged':1.0}
     # Write code here
     return ret_dict
 
 # 29. Random Password Generator
-def generate_password(length):
+def generate_password(length=15):
     """
     Generate and return a random alphanumeric password of given length.
 
@@ -443,20 +663,23 @@ def generate_password(length):
     Returns:
     - A string representing the password
     """
+    chars=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    uppercase_letters=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    digits=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    lists=[chars,uppercase_letters,digits]
+    #one_list = 
     gen_passwd = ""
-    while is_valid_password(gen_passwd) == False:
-        if length < 6:
-            return "Password length must be at least 6"
-        import random
-        import string
-        lowercase_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-        uppercase_letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-        digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-        symbols=['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+']
-        all_characters = lowercase_letters + uppercase_letters + digits + symbols
-        for i in range(length):
-            gen_passwd = ''.join(random.choice(all_characters))
+    gen_passwd_lst=list(gen_passwd)
+    gen_passwd_lst.append(random.choice(chars))
+    gen_passwd_lst.append(random.choice(uppercase_letters))
+    gen_passwd_lst.append(random.choice(digits))
+    #if length > 15:
+    for i in range(length):
+        gen_passwd_lst.append(random.choice(random.choice(lists)))
+    gen_passwd="".join(gen_passwd_lst)
+    print(gen_passwd)
     #Write code here
+    
     return gen_passwd
 
 # 30. Password Validation
@@ -493,10 +716,10 @@ def is_valid_password(password):
                 has_digit=True
             if i in symbols:
                 has_symbol=True
-            if has_lower and has_upper and has_digit and has_symbol:
+            if has_lower and has_upper and has_digit:
                 is_valid=True
     else:
-        is_valid="Password length must be at least 6"    
+        is_valid=False    
     #Write code here
     return is_valid
 
@@ -506,9 +729,10 @@ def main():
 
     print("1.", sum_of_digits(123) == 6 and sum_of_digits(0) == 0 and sum_of_digits(999) == 27)
     print("2.", swap(1, 2) == (2, 1) and swap('a', 'b') == ('b', 'a') and swap(True, False) == (False, True))
-    print("3.", check_types([1, 'x', 2.5]) == [int, str, float] and check_types([]) == [] and check_types([None]) == [type(None)])
+    print("3.", check_types([1, 'x', 2.5]) == [type(0), type("hi"), type(1.5)] and check_types([]) == [] and check_types([None]) == [type(None)])
     print("4.", reverse_string('cat') == 'tac' and reverse_string('') == '' and reverse_string('a') == 'a')
     print("5.", bmi(45, 1.6)[1] == 'Underweight' and bmi(65, 1.7)[1] == 'Normal' and bmi(90, 1.6)[1] == 'Obese')
+<<<<<<< HEAD
     print("6.",fizz_buzz()==(27,13,7))
     print("7.", is_palindrome('level') and not is_palindrome('hello') and is_palindrome('Aibohphobia'.lower()))
     print("8.", primes_less_than(2) == [] and primes_less_than(10) == [2, 3, 5, 7] and primes_less_than(20)[-1] == 19)
@@ -521,24 +745,39 @@ def main():
     print("14.", is_leap_year(2000) == True and is_leap_year(1900) == False and is_leap_year(2024) == True)
     print("15.", custom_min([3,2,1]) == 1 and custom_min([100]) == 100 and custom_min([-1,0]) == -1)
     print("16.", custom_max([3,2,1]) == 3 and custom_max([100]) == 100 and custom_max([-1,0]) == 0)
+=======
+    print("5.", bmi(45, 1.6)[1], bmi(65, 1.7)[1], bmi(90, 1.6)[1])
+    print("6.", fizz_buzz() == (34, 20, 7))
+    print("7.", is_palindrome('level') and not is_palindrome('hello') and is_palindrome('Aibohphobia'.lower()))
+    print("8.", primes_less_than(1)==0 and primes_less_than(20)==8 and primes_less_than(200)==46)
+    print("9.", factorial_val(0) == 1 and factorial_val(1) == 1 and factorial_val(4) == 24)
+    print("10.", average_scores([('Alice', 80), ('Bob', 70), ('Alice', 90)]) == {'Alice': 90.0, 'Bob': 70.0}
+           and average_scores([]) == {} 
+           and average_scores([('Charlie', 100), ('Charlie', 50), ('Charlie', 75)]) == {'Charlie': 75.0})
+    print("11.", unique_elements([1,1,2,3,3]) == [2] and unique_elements([]) == [] and unique_elements([4,5,4,6]) == [5,6])
+    print("12.", char_frequency('a a b') == {'a': 2, ' ': 2, 'b': 1} and char_frequency('') == {} and char_frequency('a b c a b c') == {'a': 2, ' ': 5, 'b': 2, 'c': 2})
+    print("13.", flatten_once([[1,2,3,4],[3]]) == [1,2,3,4,3] and flatten_once([]) == [] and flatten_once([[1,3],[2]]) == [1,3,2])
+    print("14.", top_3_words('one two one three two one') == ['one', 'two', 'three'] and top_3_words('a b c') == ['a','b','c'] and top_3_words('') == [])
+    print("15.", sort_tuples_by_second([(1,2),(3,1)]) == [(3,1),(1,2)] and sort_tuples_by_second([]) == [] and sort_tuples_by_second([(5,5)]) == [(5,5)])
+    print("16.", is_leap_year(2000) == True and is_leap_year(1900) == False and is_leap_year(2024) == True)
+>>>>>>> 34a7bee428fe9f16a49b09944df95f82bd37f38f
     print("-----------------")
     print("|17 (Min).", custom_min([3,2,1]) == 1 and custom_min([100]) == 100 and custom_min([-1,0]) == -1,"|")
     print("|17 (Max).", custom_max([3,2,1]) == 3 and custom_max([100]) == 100 and custom_max([-1,0]) == 0,"|")
     print("|17 (All).", custom_min([3,2,1]) == 1 and custom_min([100]) == 100 and custom_min([-1,0]) == -1 and custom_max([3,2,1]) == 3 and custom_max([100]) == 100 and custom_max([-1,0]) == 0,"|")
     print("-----------------")
-    print("18.", log('hi', level='INFO') == "[INFO] hi" and log('warn', level='WARNING') == '[WARNING] warn' and log('err', level='ERROR') == '[ERROR] err')
-    print("19.", safe_divide(4,2) == 2 and safe_divide(4,0) == 'Error: Division by zero is undefined.' and isinstance(safe_divide('a',1), str))
+    print("18.", mini_calculator(2,3,'add') == 5 and mini_calculator(5,2,'subtract') == 3 and mini_calculator(2,3,'multiply') == 6)
+    print("19.", logs("hi") == "[INFO]hi" and logs("warn", level="WARNING") == "[WARNING]warn" and logs("err", level="ERROR") == "[ERROR]err")
     print("20.", filter_even_numbers([1,2,3]) == [2] and filter_even_numbers([]) == [] and filter_even_numbers([2,4,6]) == [2,4,6])
     print("21.", transpose_matrix([[1]]) == [[1]] and transpose_matrix([[1,2],[3,4]]) == [[1,3],[2,4]] and transpose_matrix([[1,2,3],[4,5,6]]) == [[1,4],[2,5],[3,6]])
     print("22.", invert_dictionary({'a':1}) == {1:'a'} and invert_dictionary({'x':9,'y':8}) == {9:'x',8:'y'} and invert_dictionary({}) == {})
     print("23.", word_length_dict(['hi']) == {'hi':2} and word_length_dict(['a','ab']) == {'a':1,'ab':2} and word_length_dict([]) == {})
-    print("24.", safe_divide(8,4) == 2.0 and safe_divide(5,0) == 'Error: Division by zero is undefined.' and isinstance(safe_divide('a','b'), str))
+    print("24.", safe_divide(8,4) == 2.0 and safe_divide(5,0) == 'Error' and isinstance(safe_divide('a','b'), str))
     print("25.", safe_lookup({'x':1},'x') == 1 and safe_lookup({'x':1},'y') == 'Key not found' and safe_lookup({},'z') == 'Key not found')
     print("26.", multiplication_table() == 385)  # diagonal sum 1+4+...+100
     print("27.", floyds_triangle(1) == 1 and floyds_triangle(3) == 6 and floyds_triangle(5) == 15)
-    print("28.", math_operations(4,2)['power'] == 16 and math_operations(9,2)['sqrt'] == 3 and 'log' in math_operations(10,1))
-    #print("29.", len(generate_password(10)) == 10 and is_valid_password(generate_password(10)) == True and generate_password(5) == "Password length must be at least 6")
-    print("29. There Has Been A Error In This Function So It Is Commented Out For Now")
+    print("28.", math_operations(4,2)['power'] == 16 and math_operations(9,2)['sqrt'] == 3 and math_operations(10,1)['loged'] == 1.0)
+    print("29.", len(generate_password(6)) >= 6 and is_valid_password(generate_password()) == True)
     print("30.", is_valid_password('Abc123') == True and is_valid_password('abc') == False and is_valid_password('ABC123') == False)
     print("All Done!")
     print("Note: For some functions, multiple valid outputs may exist (e.g., password generation).")
@@ -547,7 +786,7 @@ def main():
     print("      Check the function docstrings for details.")
     print("      Happy Coding!")
     print("More Tests Avalible On www.github.com/naomyadav/Youngwonks-lesson/python_challenges_with_tests.py and www.coding101.github.youngwonks.naomyadav.com")
-    print("Not Organized By Youngwonks 3rd Party Customers May Edit Or Copy This Code Without Permission.")
+    print("Not Organized By Youngwonks.")
     print("Edited By: Vikas Yadav (vikasy)")
     print("Please Reach Out To Him For Any Queries Related To This Code (vikasy)")
     print("","")

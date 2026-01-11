@@ -1,4 +1,4 @@
-from mathHomeworkSolver import solveBasic 
+
 # # #Pattern
 # # #1  1  1
 # # #2  4  8
@@ -9,6 +9,7 @@ from mathHomeworkSolver import solveBasic
 N=10
 for i in range(1,11,1):
     print(i,i**2,i**3)
+
 
 
 # 1 
@@ -34,7 +35,7 @@ for i in range(N+1):
     for t in range(i):
         print(a,end=" ")
     print()
-
+print("dsds")
 N=5
 N2=N-1
 
