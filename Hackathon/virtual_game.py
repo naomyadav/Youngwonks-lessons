@@ -20,12 +20,12 @@ def print_status(day, price, cash, shares):
     print(f"📦 Shares Owned: {shares}")
     print(f"📊 Portfolio Value: ${cash + shares * price}")
 
-def playground_print_status(day, price, cash, shares):
-    print(f"\n📅 Day Infinite")
+def playground_print_status(price, shares):
+    print(f"\n📅 Day ∞")
     print(f"📈 Stock Price: ${price}")
-    print(f"💰 Cash: Infinite")
+    print(f"💰 Cash: ∞")
     print(f"📦 Shares Owned: {shares}")
-    print(f"📊 Portfolio Value: ${cash + shares * price}")
+    print(f"📊 Portfolio Value: ∞")
     
 
 def virtual_trading_game(days=10, starting_cash=1000):

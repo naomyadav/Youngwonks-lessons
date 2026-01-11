@@ -23,7 +23,7 @@ while True:
     snakelegnth.insert(0,[snakex,snakey])
     for event in pygame.event.get():
         if event.type == QUIT:
-            pygame.quit()
+            break
             exit()
         elif event.type == KEYDOWN:
             if event.key == K_DOWN and snakey!=550:

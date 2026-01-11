@@ -24,7 +24,7 @@ while True:
                 evlc=event.pos
                 pygame.draw.circle(screen,(255,0,0),evlc,20)
         if event.type == QUIT:
-            pygame.quit()
+            break
             exit()
         
     

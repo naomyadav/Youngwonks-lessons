@@ -13,7 +13,7 @@ while True:
     screen.fill((56,75,198))
     for event in pygame.event.get():
         if event.type == QUIT:
-            pygame.quit()
+            break
             exit()
     #Continuously update the screen
     pygame.display.update()

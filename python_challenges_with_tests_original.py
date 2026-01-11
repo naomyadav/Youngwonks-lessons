@@ -84,7 +84,10 @@ def fizz_buzz():
 # 7. Palindrome Check
 def is_palindrome(s):
     """Return True if s is a palindrome (reads the same backward). E.g., 'racecar' => True"""
-    is_palindrome = False
+    if s==s[::-1]:
+        is_palindrome = True
+    else:
+        is_palindrome = False
     # Write code here
     return is_palindrome
 
@@ -92,6 +95,46 @@ def is_palindrome(s):
 def primes_less_than(n):
     """Return a list of all prime numbers less than n."""
     count_prime = 0
+    import math
+
+def sieve(upperBound):
+    if upperBound < 2:
+        return
+    
+    isComposite = [0] * (upperBound + 1)
+    primes = [0] * int(upperBound / math.log(upperBound))
+    
+    isComposite[0] = 1
+    isComposite[1] = 1
+    
+    m = 2
+    while m * m <= upperBound:
+        if isComposite[m] != 1:
+            z = m * m
+            while z <= upperBound:
+                isComposite[z] = 1
+                z += m
+        m += 1
+    
+    p = 0
+    for h in range(upperBound + 1):
+        if isComposite[h] != 1:
+            primes[p] = h
+            p += 1
+    
+    b = 0
+    c = 15
+    for a in range(312):
+        b += 40
+        # textSize(20)
+        # text(primes[a], b, c)
+        if b > 350:
+            b = 0
+            c += 25
+
+def draw():
+    primeLimit = 452
+    sieve(primeLimit)
     # Write code here
     return count_prime
 
@@ -466,12 +509,12 @@ def main():
     print("3.", check_types([1, 'x', 2.5]) == [int, str, float] and check_types([]) == [] and check_types([None]) == [type(None)])
     print("4.", reverse_string('cat') == 'tac' and reverse_string('') == '' and reverse_string('a') == 'a')
     print("5.", bmi(45, 1.6)[1] == 'Underweight' and bmi(65, 1.7)[1] == 'Normal' and bmi(90, 1.6)[1] == 'Obese')
-    print(fizz_buzz()==(27,13,7))
-    print("6.", is_palindrome('level') and not is_palindrome('hello') and is_palindrome('Aibohphobia'.lower()))
-    print("7.", primes_less_than(2) == [] and primes_less_than(10) == [2, 3, 5, 7] and primes_less_than(20)[-1] == 19)
-    print("8.", factorial(0) == 1 and factorial(1) == 1 and factorial(4) == 24)
-    print("9.", unique_elements([1,1,2,3,3]) == [2] and unique_elements([]) == [] and unique_elements([4,5,4,6]) == [5,6])
-    print("10.", char_frequency('aab') == {'a':2,'b':1} and char_frequency('') == {} and char_frequency('abcabc') == {'a':2,'b':2,'c':2})
+    print("6.",fizz_buzz()==(27,13,7))
+    print("7.", is_palindrome('level') and not is_palindrome('hello') and is_palindrome('Aibohphobia'.lower()))
+    print("8.", primes_less_than(2) == [] and primes_less_than(10) == [2, 3, 5, 7] and primes_less_than(20)[-1] == 19)
+    print("9.", factorial(0) == 1 and factorial(1) == 1 and factorial(4) == 24)
+    print("10.", unique_elements([1,1,2,3,3]) == [2] and unique_elements([]) == [] and unique_elements([4,5,4,6]) == [5,6])
+    print("11.", char_frequency('aab') == {'a':2,'b':1} and char_frequency('') == {} and char_frequency('abcabc') == {'a':2,'b':2,'c':2})
     print("11.", flatten_once([[1,2],[3]]) == [1,2,3] and flatten_once([]) == [] and flatten_once([[1],[2],[3]]) == [1,2,3])
     print("12.", top_3_words('one two one three two one') == ['one', 'two', 'three'] and top_3_words('a b c') == ['a','b','c'] and top_3_words('') == [])
     print("13.", sort_tuples_by_second([(1,2),(3,1)]) == [(3,1),(1,2)] and sort_tuples_by_second([]) == [] and sort_tuples_by_second([(5,5)]) == [(5,5)])
