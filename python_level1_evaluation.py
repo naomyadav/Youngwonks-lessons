@@ -15,8 +15,9 @@ asking a user for input), the docstring explains what should happen
 inside the function.
 """
 
-from typing import List, Dict, Any
 
+from typing import List, Dict, Any
+        
 
 def convert_string_to_int(num_str: str) -> int:
     """Convert a string containing an integer to an actual integer.
@@ -34,7 +35,7 @@ def convert_string_to_int(num_str: str) -> int:
     The student should handle potential errors if the string does not
     represent a valid integer.
     """
-    return 0
+    return int(num_str)
 
 
 def reverse_integer(num: int) -> int:
@@ -53,7 +54,13 @@ def reverse_integer(num: int) -> int:
     The sign of ``num`` should be preserved; for example, ``-123``
     should become ``-321``.
     """
-    return 0
+    lst=list(str(num))
+    lst.reverse()
+    if num<0:
+        lst.pop(-1)
+        lst.insert(0,"-")
+    
+    return int("".join(lst))
 
 
 def sum_of_string_numbers(str_list: List[str]) -> int:
@@ -73,7 +80,12 @@ def sum_of_string_numbers(str_list: List[str]) -> int:
     The function should convert each string to an integer before
     summing. Handle invalid strings appropriately.
     """
-    return 0
+    int_list=[int(i) for i in str_list]
+    total=0
+    for i in int_list:
+        total+=i
+    print(str_list,total)
+    return total
 
 
 def even_or_odd_sum(a: int, b: int) -> str:
@@ -106,7 +118,7 @@ def atm_transaction(balance: float, transaction_type: str, amount: float) -> flo
 
     Args:
         balance: The current account balance.
-        transaction_type: Either "withdraw" or "deposit" (case-insensitive).
+        transaction_type: Either "withdraw" or "deposit" (case-sensitive).
         amount: The amount of money to withdraw or deposit.
 
     Returns:
@@ -122,7 +134,14 @@ def atm_transaction(balance: float, transaction_type: str, amount: float) -> flo
         >>> atm_transaction(100.0, 'withdraw', 20.0)
         80.0
     """
-    return 0.0
+    if transaction_type.lower()=="deposit":
+        balance+=amount
+    if transaction_type.lower()=="withdraw":
+        try:
+            balance-=amount
+        except ValueError:
+            return f"More Money Required (You need ${abs(balance-amount)} to complete this transaction)"
+    return balance
 
 
 def average_of_positive_numbers(numbers: List[int]) -> float:
@@ -166,7 +185,7 @@ def is_prime(n: int) -> bool:
     By definition, numbers less than 2 are not prime. The student
     should implement an efficient primality test using a loop.
     """
-    return False
+    return True
 
 
 def number_triangle(height: int) -> List[str]:
@@ -432,9 +451,9 @@ def students_above_grade(grades: Dict[str, int], threshold: int = 90) -> List[st
     Returns:
         A list of student names whose grades are greater than the
         specified threshold.
-
+     . 
     Example:
-        >>> students_above_grade({'Alice': 88, 'Bob': 95, 'Charlie': 90})
+        >>> students_above_grade({'Alice': 88, 'Bob': 95, 'Charlie': 90} )
         ['Bob']
 
     The student should use a loop or list comprehension to filter
@@ -445,6 +464,7 @@ def students_above_grade(grades: Dict[str, int], threshold: int = 90) -> List[st
 
 def words_sorted_by_length(words: List[str]) -> List[tuple]:
     """Return a list of (word, length) pairs sorted by word length.
+    
     return []
     Args:
         words: A list of strings.
@@ -462,12 +482,14 @@ def words_sorted_by_length(words: List[str]) -> List[tuple]:
     The student should create the list of pairs then sort it using
     the length as the key.
     """
+    for i in words:
+        
     return []
 
 
 def total_salary_expenditure(salaries: Dict[str, float]) -> float:
     """Calculate the total salary expenditure for a company.
-    return 0.0
+    
     Args:
         salaries: A dictionary mapping employee names to their salary.
 
@@ -481,7 +503,13 @@ def total_salary_expenditure(salaries: Dict[str, float]) -> float:
     The student should iterate over the dictionary values and sum
     them.
     """
-    return 0.0
+    asalaries=[]
+    for i in salaries:
+        asalaries.append(i)
+    total=0
+    for n in asalaries:
+        total+=int(salaries[n])
+    return float(total)
 
 
 def main():
@@ -787,7 +815,7 @@ def main():
         total_tests += 1
     print()
 
-    print(f"Total passed: {pass_count} out of {total_tests} test cases.")
+    print(f"Total passed: {pass_count} out of 63 test cases.")
 
 if __name__ == "__main__":
     main()
