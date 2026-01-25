@@ -63,7 +63,7 @@ def reverse_integer(num: int) -> int:
     return int("".join(lst))
 
 
-def sum_of_string_numbers(str_list: List[str]) -> int:
+def sum_of_string_numbers(str_list) -> int:
     """Sum a list of numeric strings and return the total as an integer.
 
     Args:
@@ -80,12 +80,7 @@ def sum_of_string_numbers(str_list: List[str]) -> int:
     The function should convert each string to an integer before
     summing. Handle invalid strings appropriately.
     """
-    int_list=[int(i) for i in str_list]
-    total=0
-    for i in int_list:
-        total+=i
-    print(str_list,total)
-    return total
+    return ""
 
 
 def even_or_odd_sum(a: int, b: int) -> str:
@@ -483,7 +478,7 @@ def words_sorted_by_length(words: List[str]) -> List[tuple]:
     the length as the key.
     """
     for i in words:
-        
+        pass
     return []
 
 
