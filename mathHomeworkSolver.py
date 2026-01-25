@@ -8,7 +8,7 @@ def solveBasic():
     opr = input(str(one)+" |_| _  (+  - X ÷): ")
     two = int(input(str(one)+" "+opr+" |_|:  "))
     print(one,opr,two,"=",end=" ")
-    if opr == "÷":
+    if opr == "÷" or opr == "/":
         print(one/two)
     elif opr == "X":
         print(one*two)
@@ -41,7 +41,7 @@ def solveWithLargeLangugeModels(q):
     response = requests.post(
         'https://api.openai.com/v1/chat/completions',
         headers={
-            'Authorization': 'Bearer sk-proj-8FgGmj7gL6UNLTtU4tpBT3BlbkFJ7rGJcj1a9DPpJxNnGwRo',
+            'Authorization': 'Bearer sk-proj-H8AFPgPGYmj7gL6UNLTtU4tpBT3BlbkFJ7rGJcj1a9DPpJxNnGwRo',
             'Content-Type': 'application/json'
         },
         data=json.dumps({
@@ -53,4 +53,5 @@ def solveWithLargeLangugeModels(q):
 
     print(answer)
     #say(answer)
-solveWithLargeLangugeModels(input())
+
+
