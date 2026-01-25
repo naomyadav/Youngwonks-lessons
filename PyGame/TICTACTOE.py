@@ -3,11 +3,11 @@ from pygame.locals import *
 from time import sleep
 from tkinter import messagebox
 def draw_x(x,y):
-<<<<<<< HEAD
+
     pygame.draw.line(screen,(255,255,255),(x-50,y-50),(x+50,y+50),5)
-=======
+
     pygame.draw.line(screen,(255,255,255),(x+50,y+50),(x-50,y-50),5)
->>>>>>> d5d3328eb844c95148525cf6699b6c666c1d1e1c
+
     pygame.draw.line(screen,(255,255,255),(x+50,y-50),(x-50,y+50),5)
 def draw_o(x,y):
     pygame.draw.circle(screen,(255,255,255),(x,y),50.0,5)
@@ -16,7 +16,7 @@ pygame.init()
 screen = pygame.display.set_mode((601,601))
 pygame.display.set_caption("Colors!!")
 TURN="x"
-<<<<<<< HEAD
+
 squares={1:"",2:"",3:"",4:"",5:"",6:"",7:"",8:"",9:""}
 while True:
     #screen.fill((56,75,198))
@@ -24,7 +24,7 @@ while True:
     pygame.draw.line(screen,(254,1,254),(400,0),(400,600))
     pygame.draw.line(screen,(254,1,254),(0,200),(600,200))
     pygame.draw.line(screen,(254,1,254),(0,400),(600,400))    
-=======
+
 squares={"1":"","2":"","3":"","4":"","5":"","6":"","7":"","8":"","9":""}
 TURN_NUM=0
 while True:
@@ -34,13 +34,12 @@ while True:
     pygame.draw.line(screen,(254,1,254),(0,400),(600,400))
     pygame.draw.line(screen,(254,1,254),(400,0),(400,600))
     
->>>>>>> d5d3328eb844c95148525cf6699b6c666c1d1e1c
+
     for event in pygame.event.get():
         if event.type == QUIT:
             break
             exit()
         if event.type==MOUSEBUTTONDOWN:
-<<<<<<< HEAD
             x,y=event.pos
             if x in range(0,200) and y in range(0,200) and squares[1]=="":
                 if TURN=="x":
@@ -71,15 +70,13 @@ while True:
                     TURN="x"
 
 
-    """ 
-    if TURN=="x":
+
+            if TURN=="x":
                 draw_x(event.pos[0],event.pos[1])
                 TURN="o"
             elif TURN=="o":
                 draw_o(event.pos[0],event.pos[1])
-                TURN="x"    
-                """
-=======
+                TURN="x"   
             x,y = event.pos
             #1,1-
             if x in range(0,200) and y in range(0,200) and squares["1"]=="":
@@ -190,7 +187,7 @@ while True:
                     TURN="x"
                     TURN_NUM+=1
         
-<<<<<<< HEAD
+
     
     if squares["1"] == squares["2"] == squares["3"] != "":
         print(squares["1"]+" WON!",squares["1"]+" WON!")
@@ -228,7 +225,4 @@ while True:
         print("DRAW")
         pygame.display.update()
         sleep(1);break
-=======
->>>>>>> d5d3328eb844c95148525cf6699b6c666c1d1e1c
->>>>>>> 34a7bee428fe9f16a49b09944df95f82bd37f38f
-    pygame.display.update()
+pygame.display.update()
