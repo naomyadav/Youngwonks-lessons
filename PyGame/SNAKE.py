@@ -4,7 +4,7 @@ import random
 
 pygame.init()
 screen = pygame.display.set_mode((600,600))
-pygame.display.set_caption("Colors!!")
+pygame.display.set_caption("Tic Tac Toe!")
 pygame.draw.rect(screen,(0,0,0), (0,0, 100, 100), 10  )
 foodx = (random.randint(0,600) // 50 ) * 50
 foody = (random.randint(0,600) // 50 ) * 50
@@ -23,7 +23,7 @@ while True:
     snakelegnth.insert(0,[snakex,snakey])
     for event in pygame.event.get():
         if event.type == QUIT:
-            break
+            pygame.quit()
             exit()
         elif event.type == KEYDOWN:
             if event.key == K_DOWN and snakey!=550:

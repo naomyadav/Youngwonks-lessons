@@ -3,7 +3,10 @@ from pygame.locals import *
 from time import sleep
 from tkinter import messagebox
 def draw_x(x,y):
+<<<<<<< HEAD
+=======
 
+>>>>>>> e3e1b24f0601ad7fefef93bb6e0ba044d11e248e
     pygame.draw.line(screen,(255,255,255),(x-50,y-50),(x+50,y+50),5)
 
     pygame.draw.line(screen,(255,255,255),(x+50,y+50),(x-50,y-50),5)
@@ -34,12 +37,19 @@ while True:
     pygame.draw.line(screen,(254,1,254),(0,400),(600,400))
     pygame.draw.line(screen,(254,1,254),(400,0),(400,600))
     
+<<<<<<< HEAD
+=======
 
+>>>>>>> e3e1b24f0601ad7fefef93bb6e0ba044d11e248e
     for event in pygame.event.get():
         if event.type == QUIT:
             break
             exit()
         if event.type==MOUSEBUTTONDOWN:
+<<<<<<< HEAD
+
+=======
+>>>>>>> e3e1b24f0601ad7fefef93bb6e0ba044d11e248e
             x,y=event.pos
             if x in range(0,200) and y in range(0,200) and squares[1]=="":
                 if TURN=="x":
@@ -76,7 +86,12 @@ while True:
                 TURN="o"
             elif TURN=="o":
                 draw_o(event.pos[0],event.pos[1])
+<<<<<<< HEAD
+                TURN="x"    
+
+=======
                 TURN="x"   
+>>>>>>> e3e1b24f0601ad7fefef93bb6e0ba044d11e248e
             x,y = event.pos
             #1,1-
             if x in range(0,200) and y in range(0,200) and squares["1"]=="":
@@ -187,7 +202,10 @@ while True:
                     TURN="x"
                     TURN_NUM+=1
         
+<<<<<<< HEAD
+=======
 
+>>>>>>> e3e1b24f0601ad7fefef93bb6e0ba044d11e248e
     
     if squares["1"] == squares["2"] == squares["3"] != "":
         print(squares["1"]+" WON!",squares["1"]+" WON!")
@@ -225,4 +243,8 @@ while True:
         print("DRAW")
         pygame.display.update()
         sleep(1);break
+<<<<<<< HEAD
+    pygame.display.update()
+=======
 pygame.display.update()
+>>>>>>> e3e1b24f0601ad7fefef93bb6e0ba044d11e248e
