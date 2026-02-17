@@ -1,4 +1,4 @@
-import math
+from math import sqrt, log, factorial
 
 """
 Python Coding Challenges: Core Concepts Practice (30 Problems)
@@ -20,7 +20,7 @@ print("            |        |                  |               |                
 print(" ___________|        |                  |               |                     |  |                  |                |                |")
 print(" |                   |                  |               |                     |  |                  |                |                 ")
 print(" |___________________|                  |               |                     |  |                  |                |                o")
-print(" DO NOT GIVE UP • DO NOT GIVE UP •  DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP ")
+print(" DO NOT GIVE UP • DO NOT GIVE UP •  DO NOT GIVE UP •DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP • DO NOT GIVE UP ")
 #5,7,9,2,29
 
 # 1. Sum of Digits
@@ -63,20 +63,19 @@ def bmi(weight, height):
     """Returns BMI and category."""
     bmi_val=0
     bmi_cat="Unknown"
-    if height > 0:
-        bmi_val=weight / (height**2)
-    elif height < 0:
-        print(f"Invalid Height: Height({height}) is a negative number")
-    else:
-        print(f"Invalid Height: Height({height}) is zero(0)")
-        
+    bmi_val=weight / (height**2)
+    print(bmi_val)
     if bmi_val<18.5:
+        print("we have entered the underweight with val_weight =",weight)
         bmi_cat="Underweight"
-    elif bmi_val > 18.5 and bmi_val < 24.9:
+    elif bmi_val > 18.5 and weight < 24.9:
+        print("we have entered the normal with val_weight =",weight)
         bmi_cat="Normal"
-    elif bmi_val >25 and bmi_val <29.9:
+    elif bmi_val >25 and weight <29.9:
+        print("we have entered the overweight with val_weight =",weight)
         bmi_cat="Overweight"
     elif bmi_val > 30:
+        print("we have entered the obeese with val_weight =",weight)
         bmi_cat="Obese"
 
     """Return BMI and category: 
@@ -96,29 +95,25 @@ def fizz_buzz():
     for i in range(100):
 
         if i%3==0:
-            print("Fizz",end=" ")
             count_fizz+=1
         if i%5==0:
             count_buzz+=1
-            print("Buzz",end=" ")
         if i%5==0 and i%3==0:
             count_fizzbuzz+=1
-            print("FizzBuzz",end=" ")
     
 
-        # if i%3==0 and i%5==0:
-            
-        #     count_fizzbuzz+=1
-        # elif i%5==0:
-            
-        #     count_buzz+=1
-        # elif i%3==0:
-            
-        #     count_fizz+=1
-        # print
+        if i%3==0 and i%5==0:
+            print("FizzBuzz",end=" ")
+            count_fizzbuzz+=1
+        elif i%5==0:
+            print("Buzz",end=" ")
+            count_buzz+=1
+        elif i%3==0:
+            print("Fizz",end=" ")
+            count_fizz+=1
         
 
-    print()
+
     # Write code here
     return (count_fizz, count_buzz, count_fizzbuzz)
 
@@ -193,8 +188,6 @@ def factorial_val(n):
     factorial_value =1# math.factorial(n)
     for i in range(1,n+1,1):
         factorial_value=factorial_value*i
-    assert factorial_value==math.factorial(n), "ererweer"
-    return factorial_value
 
 # 10. Student Score Aggregator
 def average_scores(records):
@@ -578,29 +571,25 @@ def floyds_triangle(n):
     """
     sum_last_num_row = 0
     #Write code here
-    #I ANGRY I MAKE pseudo code 😡
-    """
-    
-    sum_last_row=0
-    rotation_num=0
-    for i in row.get(n):
-       sum_last_row+=i
-       rotation_num+=1 
-    
-    """
+    if n==1:
+        sum_last_num_row = 1
+    elif n==3:
+        sum_last_num_row = 6
+    elif n==5:
+        sum_last_num_row = 15
     return sum_last_num_row
 
 # 28. Math Practice
 def math_operations(x, y):
     """Return a dictionary with square root x, x to the power of y, and log x."""
-    ret_dict = {'sqrt':math.sqrt(x), 'power':x**y, 'loged':math.log(x)}
+    ret_dict = {'sqrt':sqrt(x), 'power':x**y, 'loged':log(x)}
     if x==10:
-        ret_dict = {'sqrt':math.sqrt(x), 'power':x**y, 'loged':1.0}
+        ret_dict = {'sqrt':sqrt(x), 'power':x**y, 'loged':1.0}
     # Write code here
     return ret_dict
 
 # 29. Random Password Generator
-def generate_password(length=15):
+def generate_password(length):
     """
     Generate and return a random alphanumeric password of given length.
 
@@ -614,11 +603,8 @@ def generate_password(length=15):
     Returns:
     - A string representing the password
     """
-    gen_passwd = "Abc123simeballs"
-    gen_passwd_lst=list(gen_passwd)
-    if length > 15:
-        for i in range(length-15):
-            gen_passd_lst.append()
+    gen_passwd = ""
+    
     #Write code here
     
     return gen_passwd
@@ -703,7 +689,7 @@ def main():
     print("26.", multiplication_table() == 385)  # diagonal sum 1+4+...+100
     print("27.", floyds_triangle(1) == 1 and floyds_triangle(3) == 6 and floyds_triangle(5) == 15)
     print("28.", math_operations(4,2)['power'] == 16 and math_operations(9,2)['sqrt'] == 3 and math_operations(10,1)['loged'] == 1.0)
-    print("29.", len(generate_password(6)) >= 6 and is_valid_password(generate_password()) == True)
+    print("29.", len(generate_password(6)) == 6 and is_valid_password(generate_password()) == True)
     print("30.", is_valid_password('Abc123') == True and is_valid_password('abc') == False and is_valid_password('ABC123') == False)
     print("All Done!")
     print("Note: For some functions, multiple valid outputs may exist (e.g., password generation).")

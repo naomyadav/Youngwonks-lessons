@@ -8,7 +8,7 @@ def solveBasic():
     opr = input(str(one)+" |_| _  (+  - X ÷): ")
     two = int(input(str(one)+" "+opr+" |_|:  "))
     print(one,opr,two,"=",end=" ")
-    if opr == "÷":
+    if opr == "÷" or opr == "/":
         print(one/two)
     elif opr == "X":
         print(one*two)
@@ -53,4 +53,5 @@ def solveWithLargeLangugeModels(q):
 
     print(answer)
     #say(answer)
-solveWithLargeLangugeModels(input())
+
+
