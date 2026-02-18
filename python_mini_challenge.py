@@ -97,6 +97,8 @@ def csv_to_json(src: Path, dest: Path) -> List[dict]:
         ``status`` = "pass" if grade >= 70 else "fail".
       * Return the list so tests can inspect it.
       * Handle missing files by raising ``FileNotFoundError``.
+      * A sample file ``sample_students.csv`` is included in this folder and
+        may be used while developing locally.
     """
 
     raise NotImplementedError
