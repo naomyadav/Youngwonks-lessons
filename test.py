@@ -1,9 +1,36 @@
-def top_3_words(text):
-    top_3_words = []
-    word_list = text.split()
-    print(word_list)
-    word_count={}
+def SecretPhraseDecrypter(SecretPhrase,DecryptAmount):
+    """
+    Docstring for SecretPhraseDecrypter
+    
+    :param SecretPhrase: The Secret Phrase You Want To Decrypt
+    :param DecryptAmount: Amount Of Cyphers
+    """
+    decrypted_phrase=" "
     
     
-    #Write code here
-    return top_3_words
+
+    return decrypted_phrase
+    """
+    How to use user will put encrypted phrase (String of text) And amount of cyphers (1 or 2)
+    Your job is to decrypt it!
+    Good Luck You'll Need It!
+    """
+
+#PUT TESTS HERE
+def tests():
+    return False
+    # Finish The Code To Unlock The Tests!
+    """
+    Tests Go Here:
+    """
+
+
+
+
+
+    "Tests go Here ^^^"
+    """
+    """
+
+if __name__ == "__main__":
+    tests()
