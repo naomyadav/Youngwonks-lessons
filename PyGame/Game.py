@@ -3,6 +3,10 @@ from tkinter import *
 from pygame.locals import *
 import subprocess
 import shlex
+import pyglet
+from pyglet.window import mouse
+
+
 
 import datetime
 import calendar
@@ -106,6 +110,9 @@ def draw_calendar(surface, year, month, x_offset, y_offset):
                 
                 date_txt = font.render(str(day), True, (0, 0, 0))
                 surface.blit(date_txt, (rect.x + 10, rect.y + 10))
+custom_cursor = pygame.image.load("/Users/naom/Downloads/Rainbow Arrow & Hand 3D/Rainbow Arrow & Hand 3D--cursor--SweezyCursors.png") 
+pygame.mouse.set_visible(False)
+custom_cursor = pygame.transform.scale(custom_cursor,(50,50))
 
 while running:
     now = datetime.datetime.now()
@@ -119,11 +126,12 @@ while running:
     pygame.draw.rect(screen,(255,255,255),(1273, 493, 10000,10000000),0,-1,-1,-1,-1,-1)
     draw_calendar(screen, curr_year, curr_month, 1312, 524)
     pygame.draw.rect(screen,(238, 74, 39),(0,980,1920,50))
+    
     screen.blit(logo,(10,985))
     screen.blit(chrome, (0,10))
     screen.blit(mc, (10,105))
     screen.blit(yw, (20,210))
-    show_text (datetime_text,1117, 987,(255,255,255),32)
+    show_text (datetime_text,1070, 991,(255,255,255),32)
     for event in pygame.event.get():
         if event.type == QUIT:
             running=False
@@ -131,7 +139,6 @@ while running:
             x,y=event.pos
             if x>= 0 and x<=106 and y<= 94 and y>=10:
                 try:
-    # Run the command
                     subprocess.run(cmd_parts_chrome, check=True)
                     print(f"Opened {app_path_chrome}")
                 except FileNotFoundError:
@@ -143,7 +150,6 @@ while running:
                     print(f"Permission denied: {e}")
             elif x>=38 and x <=109 and y>=113 and y<=202:
                 try:
-    # Run the command
                     subprocess.run(cmd_parts_mc, check=True)
                     print(f"Opened {app_path_mc}")
                 except FileNotFoundError:
@@ -155,7 +161,6 @@ while running:
                     print(f"Permission denied: {e}")
             elif x>=20 and x<=120 and y>=210 and y<=312:
                 try:
-    # Run the command
                     subprocess.run(cmd_parts_yw, check=True)
                     print(f"Opened {app_path_chrome} and Opened {yw_url}")
                 except FileNotFoundError:
@@ -167,7 +172,6 @@ while running:
                     print(f"Permission denied: {e}")
             elif x>=10 and x<=50 and y>=985 and y<=1026:
                 try:
-    # Run the command
                     subprocess.run(cmd_parts_logo, check=True)
                     print(f"Opened {app_path_chrome} and Opened {logo_url}")
                 except FileNotFoundError:
@@ -177,6 +181,15 @@ while running:
                 except PermissionError as e:
                     # This specific error is less likely with the 'open' command but included for completeness
                     print(f"Permission denied: {e}")
+              
+            if event.type==MOUSEMOTION:
+                x,y = pygame.mouse.get_pos()
+                if x>= 0 and x<=106 and y<= 94 and y>=10:
+                    custom_cursor = pygame.image.load("/Users/naom/Downloads/Rainbow Arrow & Hand 3D/Rainbow Arrow & Hand 3D--pointer--SweezyCursors.png") 
+                    pygame.mouse.set_visible(False)
+                    custom_cursor = pygame.transform.scale(custom_cursor,(50,50))
             print(event.pos)
     show_text(f"{date_text}",1389, 911,(0,0,0),50)
+
+    screen.blit(custom_cursor, (pygame.mouse.get_pos()))
     pygame.display.update()
