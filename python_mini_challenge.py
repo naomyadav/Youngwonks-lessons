@@ -12,22 +12,31 @@ from typing import Iterable, List, Sequence, Tuple
 
 
 # Problem 1 ------------------------------------------------------------------
-def temperature_logger(inputs: Iterable[str]) -> List[Tuple[int, float]]:
+def temperature_logger(inputs: Iterable[str]):# -> List[Tuple[int, float]]:
     """Convert Fahrenheit readings to Celsius until 'done' is encountered.
 
     Args:
         inputs: Strings representing user input (e.g., values read from input()).
                 Processing should stop once "done" (case-insensitive) is seen.
                 Every prior entry must convert to an integer.
-
+    
     Returns:
         A list of tuples ``[(fahrenheit, celsius_float), ...]`` preserving order.
 
     Raises:
         ValueError: If a non-integer entry (other than 'done') is encountered.
     """
+    values=[]
+    for i in inputs:
+        if i.lower == 'done':
+            return values
+        else:
+            try:
+                i=int(i)
+                values.append([(i,(i - 32) / 1.8)])
+            except:
+                raise ValueError
 
-    raise NotImplementedError
 
 
 # Problem 2 ------------------------------------------------------------------

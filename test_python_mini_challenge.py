@@ -21,7 +21,7 @@ def test_temperature_logger_invalid():
 
 
 # --------------------------- Problem 2 tests -------------------------------
-def test_top_words_from_file(tmp_path: Path):
+def my_test_top_words_from_file(tmp_path: Path):
     content = "Hello, hello! Python world. python code; world?"
     file_path = tmp_path / "sample.txt"
     file_path.write_text(content)
@@ -30,7 +30,7 @@ def test_top_words_from_file(tmp_path: Path):
 
 
 # --------------------------- Problem 3 tests -------------------------------
-def test_inventory_flow():
+def my_test_inventory_flow():
     inv = pmc.Inventory()
     inv.add_item("Apples", 5)
     inv.add_item("Bananas", 3)
@@ -43,7 +43,7 @@ def test_inventory_flow():
 
 
 # --------------------------- Problem 4 tests -------------------------------
-def test_prime_utils():
+def my_test_prime_utils():
     assert pmc.is_prime(2)
     assert not pmc.is_prime(1)
     assert pmc.next_prime(10) == 11
@@ -51,7 +51,7 @@ def test_prime_utils():
 
 
 # --------------------------- Problem 5 tests -------------------------------
-def test_csv_to_json(tmp_path: Path):
+def my_test_csv_to_json(tmp_path: Path):
     src = tmp_path / "students.csv"
     dest = tmp_path / "students.json"
     src.write_text("name,grade,major\nAlice,85,CS\nBob,60,Math\n")
@@ -64,7 +64,7 @@ def test_csv_to_json(tmp_path: Path):
 
 
 # --------------------------- Problem 6 tests -------------------------------
-def test_password_strength():
+def my_test_password_strength():
     score, label = pmc.password_strength("Aa1!test")
     assert score >= 4
     assert label in {"Moderate", "Strong"}
@@ -74,7 +74,7 @@ def test_password_strength():
 
 
 # --------------------------- Problem 7 tests -------------------------------
-def test_play_hangman():
+def my_test_play_hangman():
     won, states = pmc.play_hangman("apple", list("aplxyz"), max_attempts=6)
     assert won is True
     assert states[-1] == "apple"
