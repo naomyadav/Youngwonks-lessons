@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+
 def start_tkinter():
     root=Tk()
     root.title("Bank Browse")
@@ -7,7 +8,7 @@ def start_tkinter():
     Label1.pack()
     Connect=Button(root,text="Connect",command=root.destroy)
     Connect.pack()
-    Logout=Button(root,text="Log Out",command=lambda:print("Could Not Log Out"))
+    Logout=Button(root,text="Log Out",command=lambda:messagebox.askyesnocancel("Error","Could not log out", icon='error', default='cancel'))
     Logout.pack()
     root.mainloop()
     print("Connected")
@@ -38,11 +39,16 @@ class Bank:
             print(e)
     
     def help(self):
-        print("Help:\n/info Show your information\n/withdraw Witdraw Money\n/deposit Deposit Money\n/help Open This Menu\n/disconnect Disconnects you from the online bank terminal")
+        print("Help:\n/info Show your information\n/withdraw Witdraw Money\n/deposit Deposit Money\n/help Open This Menu\n/disconnect Disconnects you from the online bank terminal\n/exit exits the terminal")
     
     def disconnect(self):
         print("Disconnected")
         start_tkinter()
+
+    def stop(self):
+        print("Thanks for using bank browse terminal",self.name)
+        exit()
+
 
 start_tkinter()
 Name=input("Name: ")
@@ -64,5 +70,7 @@ while True:
         person1.withdraw_func(int(input("Withdraw:  ")))
     elif command=="/disconnect":
         person1.disconnect()
+    elif command=="/exit":
+        person1.stop()
     else:
         print("InputError: Invalid Input")
